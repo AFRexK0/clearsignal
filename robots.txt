@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://afrexk0.github.io/telegram-crypto-bot/sitemap.xml

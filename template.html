@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="{{lang}}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{meta.title}}</title>
+  <meta name="description" content="{{meta.description}}">
+  <meta name="keywords" content="{{meta.keywords}}">
+  <meta name="author" content="ClearSignal">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#0B0F19">
+  <link rel="canonical" href="{{canonical}}">
+  <link rel="alternate" hreflang="en" href="{{hreflang_en}}">
+  <link rel="alternate" hreflang="de" href="{{hreflang_de}}">
+  <link rel="alternate" hreflang="fr" href="{{hreflang_fr}}">
+  <link rel="alternate" hreflang="it" href="{{hreflang_it}}">
+  <link rel="alternate" hreflang="x-default" href="{{hreflang_en}}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ClearSignal">
+  <meta property="og:locale" content="{{og_locale}}">
+  <meta property="og:title" content="{{meta.title}}">
+  <meta property="og:description" content="{{meta.description}}">
+  <meta property="og:url" content="{{canonical}}">
+  <meta property="og:image" content="{{og_image}}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{meta.title}}">
+  <meta name="twitter:description" content="{{meta.description}}">
+  <meta name="twitter:image" content="{{og_image}}">
+  <link rel="icon" href="{{asset_prefix}}assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{asset_prefix}}assets/css/site.css">
+  <script>document.documentElement.classList.add("js");</script>
+  <script type="application/ld+json">{{json_ld}}</script>
+</head>
+<body>
+  <a class="skip" href="#main">{{nav.skip}}</a>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="orb orb-a" aria-hidden="true"></div>
+  <div class="orb orb-b" aria-hidden="true"></div>
+
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="{{home_href}}">
+        <img src="{{asset_prefix}}assets/img/favicon.svg" alt="">
+        ClearSignal
+      </a>
+      <nav class="nav-links" aria-label="{{nav.primary}}">
+        <a href="#product">{{nav.product}}</a>
+        <a href="#features">{{nav.features}}</a>
+        <a href="#pricing">{{nav.pricing}}</a>
+        <a href="#faq">{{nav.faq}}</a>
+      </nav>
+      <div class="nav-cta">
+        <details class="lang">
+          <summary>{{nav.language}}</summary>
+          <div class="lang-menu">
+            <a href="{{path_en}}" class="{{lang_en_class}}">English</a>
+            <a href="{{path_de}}" class="{{lang_de_class}}">Deutsch</a>
+            <a href="{{path_fr}}" class="{{lang_fr_class}}">Français</a>
+            <a href="{{path_it}}" class="{{lang_it_class}}">Italiano</a>
+          </div>
+        </details>
+        <a class="btn btn-ghost" href="{{telegram_bot}}">{{nav.telegram}}</a>
+        <a class="btn btn-primary" href="#pricing">{{nav.subscribe}}</a>
+        <button class="menu-btn" type="button" aria-label="{{nav.menu}}">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="kicker reveal">{{hero.kicker}}</p>
+          <h1 class="reveal">{{hero.title_html}}</h1>
+          <p class="lede reveal">{{hero.lede}}</p>
+          <div class="hero-actions reveal">
+            <a class="btn btn-primary" href="#pricing">{{hero.cta_primary}}</a>
+            <a class="btn btn-ghost" href="{{free_channel}}">{{hero.cta_secondary}}</a>
+          </div>
+          <div class="hero-meta reveal">
+            <div><strong>{{hero.s1n}}</strong>{{hero.s1l}}</div>
+            <div><strong>{{hero.s2n}}</strong>{{hero.s2l}}</div>
+            <div><strong>{{hero.s3n}}</strong>{{hero.s3l}}</div>
+          </div>
+        </div>
+        <aside class="device reveal" aria-label="{{signal.aria}}">
+          <div class="device-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+          <article class="signal">
+            <div class="signal-head">
+              <span class="pill pill-dim">{{signal.badge}}</span>
+              <span class="pill pill-long">{{signal.side}}</span>
+            </div>
+            <h3>{{signal.pair}}</h3>
+            <dl>
+              <div><dt>{{signal.entry_lbl}}</dt><dd>{{signal.entry}}</dd></div>
+              <div><dt>{{signal.lev_lbl}}</dt><dd>{{signal.lev}}</dd></div>
+              <div><dt>{{signal.candle_lbl}}</dt><dd>{{signal.candle}}</dd></div>
+              <div><dt>{{signal.hold_lbl}}</dt><dd>{{signal.hold}}</dd></div>
+            </dl>
+          </article>
+        </aside>
+      </div>
+    </section>
+
+    <div class="marquee-wrap" aria-hidden="true">
+      <div class="marquee">
+        <span><b>BTC</b> · USDT</span><span><b>ETH</b> · USDT</span><span><b>SOL</b> · USDT</span>
+        <span><b>XRP</b> · USDT</span><span><b>AVAX</b> · USDT</span><span><b>UNI</b> · USDT</span>
+        <span><b>SUI</b> · USDT</span><span><b>NEAR</b> · USDT</span><span><b>TRX</b> · USDT</span>
+        <span><b>ADA</b> · 5m</span><span><b>DOT</b> · 15m</span><span>4h · 1h · 15m · 5m</span>
+        <span><b>BTC</b> · USDT</span><span><b>ETH</b> · USDT</span><span><b>SOL</b> · USDT</span>
+        <span><b>XRP</b> · USDT</span><span><b>AVAX</b> · USDT</span><span><b>UNI</b> · USDT</span>
+        <span><b>SUI</b> · USDT</span><span><b>NEAR</b> · USDT</span><span><b>TRX</b> · USDT</span>
+        <span><b>ADA</b> · 5m</span><span><b>DOT</b> · 15m</span><span>4h · 1h · 15m · 5m</span>
+      </div>
+    </div>
+
+    <section class="section" id="product">
+      <div class="wrap split">
+        <div class="reveal">
+          <p class="kicker">{{product.kicker}}</p>
+          <h2>{{product.title}}</h2>
+          <p class="lede">{{product.lede}}</p>
+        </div>
+        <ol class="feature-grid" style="grid-template-columns:1fr 1fr">
+          <li class="card reveal"><div class="icon">01</div><h3>{{how.1t}}</h3><p>{{how.1b}}</p></li>
+          <li class="card reveal"><div class="icon">02</div><h3>{{how.2t}}</h3><p>{{how.2b}}</p></li>
+          <li class="card reveal"><div class="icon">03</div><h3>{{how.3t}}</h3><p>{{how.3b}}</p></li>
+          <li class="card reveal"><div class="icon">04</div><h3>{{how.4t}}</h3><p>{{how.4b}}</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <div class="wrap">
+        <div class="reveal">
+          <p class="kicker">{{features.kicker}}</p>
+          <h2>{{features.title}}</h2>
+          <p class="lede">{{features.lede}}</p>
+        </div>
+        <div class="feature-grid" style="margin-top:36px">
+          <article class="card reveal"><div class="icon">⟳</div><h3>{{f.1t}}</h3><p>{{f.1b}}</p></article>
+          <article class="card reveal"><div class="icon">×</div><h3>{{f.2t}}</h3><p>{{f.2b}}</p></article>
+          <article class="card reveal"><div class="icon">◈</div><h3>{{f.3t}}</h3><p>{{f.3b}}</p></article>
+          <article class="card reveal"><div class="icon">⏱</div><h3>{{f.4t}}</h3><p>{{f.4b}}</p></article>
+          <article class="card reveal"><div class="icon">◎</div><h3>{{f.5t}}</h3><p>{{f.5b}}</p></article>
+          <article class="card reveal"><div class="icon">▣</div><h3>{{f.6t}}</h3><p>{{f.6b}}</p></article>
+          <article class="card reveal"><div class="icon">⌘</div><h3>{{f.7t}}</h3><p>{{f.7b}}</p></article>
+          <article class="card reveal"><div class="icon">✓</div><h3>{{f.8t}}</h3><p>{{f.8b}}</p></article>
+          <article class="card reveal"><div class="icon">⬡</div><h3>{{f.9t}}</h3><p>{{f.9b}}</p></article>
+          <article class="card reveal"><div class="icon">◻</div><h3>{{f.10t}}</h3><p>{{f.10b}}</p></article>
+          <article class="card reveal"><div class="icon">₿</div><h3>{{f.11t}}</h3><p>{{f.11b}}</p></article>
+          <article class="card reveal"><div class="icon">✉</div><h3>{{f.12t}}</h3><p>{{f.12b}}</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="engines">
+      <div class="wrap">
+        <div class="reveal">
+          <p class="kicker">{{engines.kicker}}</p>
+          <h2>{{engines.title}}</h2>
+          <p class="lede">{{engines.lede}}</p>
+        </div>
+        <div class="engines" style="margin-top:36px">
+          <article class="card engine reveal">
+            <p class="kicker">LSTM</p>
+            <h3>{{engines.ai_t}}</h3>
+            <p class="muted">{{engines.ai_b}}</p>
+            <ul>
+              <li>{{engines.ai_1}}</li>
+              <li>{{engines.ai_2}}</li>
+              <li>{{engines.ai_3}}</li>
+              <li>{{engines.ai_4}}</li>
+              <li>{{engines.ai_5}}</li>
+            </ul>
+          </article>
+          <article class="card engine reveal">
+            <p class="kicker">Rules</p>
+            <h3>{{engines.ru_t}}</h3>
+            <p class="muted">{{engines.ru_b}}</p>
+            <ul>
+              <li>{{engines.ru_1}}</li>
+              <li>{{engines.ru_2}}</li>
+              <li>{{engines.ru_3}}</li>
+              <li>{{engines.ru_4}}</li>
+              <li>{{engines.ru_5}}</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="coverage">
+      <div class="wrap split">
+        <div class="reveal">
+          <p class="kicker">{{cov.kicker}}</p>
+          <h2>{{cov.title}}</h2>
+          <p class="lede">{{cov.lede}}</p>
+        </div>
+        <div class="reveal">
+          <p class="muted">{{cov.tf}}</p>
+          <div class="pills">
+            <span class="chip">5m</span><span class="chip">15m</span>
+            <span class="chip">1h</span><span class="chip">4h</span>
+          </div>
+          <p class="muted" style="margin-top:28px">{{cov.pairs}}</p>
+          <div class="pills">
+            <span class="chip">BTC</span><span class="chip">ETH</span><span class="chip">SOL</span>
+            <span class="chip">XRP</span><span class="chip">AVAX</span><span class="chip">UNI</span>
+            <span class="chip">SUI</span><span class="chip">NEAR</span><span class="chip">TRX</span>
+            <span class="chip">ADA</span><span class="chip">DOT</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pricing">
+      <div class="wrap">
+        <div class="pricing-intro reveal">
+          <p class="kicker">{{pri.kicker}}</p>
+          <h2>{{pri.title}}</h2>
+          <p class="lede">{{pri.lede}}</p>
+        </div>
+        <div class="billing reveal" role="tablist" aria-label="{{pri.billing}}">
+          <button type="button" data-billing="week">{{pri.weekly}}</button>
+          <button type="button" data-billing="month" class="is-on">{{pri.monthly}}</button>
+        </div>
+        <p class="muted pricing-save" data-save>{{pri.save}}</p>
+        <div class="price-grid">
+          <article class="card price reveal">
+            <span class="pill pill-dim">Free</span>
+            <h3>{{pri.free_t}}</h3>
+            <div class="amount">$0<small>{{pri.forever}}</small></div>
+            <p class="muted">{{pri.free_tag}}</p>
+            <ul class="matrix">
+              <li data-state="yes"><span>{{cmp.r1}}</span><em>{{cmp.yes}}</em></li>
+              <li data-state="lim"><span>{{cmp.r2}}</span><em>{{cmp.limited}}</em></li>
+              <li data-state="no"><span>{{cmp.r3}}</span><em>{{cmp.no}}</em></li>
+              <li data-state="no"><span>{{cmp.r4}}</span><em>{{cmp.no}}</em></li>
+              <li data-state="no"><span>{{cmp.r5}}</span><em>{{cmp.no}}</em></li>
+              <li data-state="no"><span>{{cmp.r6}}</span><em>{{cmp.no}}</em></li>
+              <li data-state="yes"><span>{{cmp.r7}}</span><em>{{cmp.yes}}</em></li>
+            </ul>
+            <a class="btn btn-ghost btn-wide" href="{{free_channel}}">{{pri.free_cta}}</a>
+          </article>
+          <article class="card price reveal">
+            <span class="pill pill-dim">Premium</span>
+            <h3>{{pri.pre_t}}</h3>
+            <div class="amount" data-price-week="12" data-price-month="35">$35<small> /mo</small></div>
+            <p class="muted">{{pri.pre_tag}}</p>
+            <ul class="matrix">
+              <li data-state="yes"><span>{{cmp.r1}}</span><em>{{cmp.yes}}</em></li>
+              <li data-state="yes"><span>{{cmp.r2}}</span><em>{{cmp.yes}}</em></li>
+              <li data-state="yes"><span>{{cmp.r3}}</span><em>{{cmp.yes}}</em></li>
+              <li data-state="no"><span>{{cmp.r4}}</span><em>{{cmp.no}}</em></li>
+              <li data-state="yes"><span>{{cmp.r5}}</span><em>{{cmp.yes}}</em></li>
+              <li data-state="no"><span>{{cmp.r6}}</span><em>{{cmp.no}}</em></li>
+              <li data-state="yes"><span>{{cmp.r7}}</span><em>{{cmp.yes}}</em></li>
+            </ul>
+            <button class="btn btn-ghost btn-wide" type="button" data-plan-tier="premium" data-plan="PREMIUM_MONTH">{{pri.pre_cta}}</button>
+          </article>
+          <article class="card price featured reveal">
+            <span class="pill pill-elite">Elite</span>
+            <h3>{{pri.el_t}}</h3>
+            <div class="amount" data-price-week="20" data-price-month="60">$60<small> /mo</small></div>
+            <p class="muted">{{pri.el_tag}}</p>
+            <ul class="matrix">
+              <li data-state="yes"><span>{{cmp.r1}}</span><em>{{cmp.yes}}</em></li>
+              <li data-state="yes"><span>{{cmp.r2}}</span><em>{{cmp.yes}}</em></li>
+              <li data-state="yes"><span>{{cmp.r3}}</span><em>{{cmp.yes}}</em></li>
+              <li data-state="yes"><span>{{cmp.r4}}</span><em>{{cmp.yes}}</em></li>
+              <li data-state="yes"><span>{{cmp.r5}}</span><em>{{cmp.yes}}</em></li>
+              <li data-state="yes"><span>{{cmp.r6}}</span><em>{{cmp.yes}}</em></li>
+              <li data-state="yes"><span>{{cmp.r7}}</span><em>{{cmp.yes}}</em></li>
+            </ul>
+            <button class="btn btn-primary btn-wide" type="button" data-plan-tier="elite" data-plan="ELITE_MONTH">{{pri.el_cta}}</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pay">
+      <div class="wrap">
+        <div class="reveal">
+          <p class="kicker">{{paysec.kicker}}</p>
+          <h2>{{paysec.title}}</h2>
+          <p class="lede">{{paysec.lede}}</p>
+        </div>
+        <div class="pay-methods" style="margin-top:28px">
+          <article class="card reveal">
+            <h3>{{paysec.st_t}}</h3>
+            <p class="muted">{{paysec.st_b}}</p>
+            <ol class="steps">
+              <li>{{paysec.st_1}}</li>
+              <li>{{paysec.st_2}}</li>
+              <li>{{paysec.st_3}}</li>
+            </ol>
+          </article>
+          <article class="card reveal">
+            <h3>{{paysec.cr_t}}</h3>
+            <p class="muted">{{paysec.cr_b}}</p>
+            <ol class="steps">
+              <li>{{paysec.cr_1}}</li>
+              <li>{{paysec.cr_2}}</li>
+              <li>{{paysec.cr_3}}</li>
+            </ol>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="wrap faq">
+        <div class="reveal">
+          <p class="kicker">{{faq.kicker}}</p>
+          <h2>{{faq.title}}</h2>
+        </div>
+        <details class="reveal">
+          <summary>{{faq.q1}}</summary>
+          <div class="faq-body"><div class="faq-body-inner"><p>{{faq.a1}}</p></div></div>
+        </details>
+        <details class="reveal">
+          <summary>{{faq.q2}}</summary>
+          <div class="faq-body"><div class="faq-body-inner"><p>{{faq.a2}}</p></div></div>
+        </details>
+        <details class="reveal">
+          <summary>{{faq.q3}}</summary>
+          <div class="faq-body"><div class="faq-body-inner"><p>{{faq.a3}}</p></div></div>
+        </details>
+        <details class="reveal">
+          <summary>{{faq.q4}}</summary>
+          <div class="faq-body"><div class="faq-body-inner"><p>{{faq.a4}}</p></div></div>
+        </details>
+        <details class="reveal">
+          <summary>{{faq.q5}}</summary>
+          <div class="faq-body"><div class="faq-body-inner"><p>{{faq.a5}}</p></div></div>
+        </details>
+        <details class="reveal">
+          <summary>{{faq.q6}}</summary>
+          <div class="faq-body"><div class="faq-body-inner"><p>{{faq.a6}}</p></div></div>
+        </details>
+        <details class="reveal">
+          <summary>{{faq.q7}}</summary>
+          <div class="faq-body"><div class="faq-body-inner"><p>{{faq.a7}}</p></div></div>
+        </details>
+        <details class="reveal">
+          <summary>{{faq.q8}}</summary>
+          <div class="faq-body"><div class="faq-body-inner"><p>{{faq.a8}}</p></div></div>
+        </details>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="risk">
+          <h3>{{risk.title}}</h3>
+          <p>{{risk.body}}</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <div>
+        <strong style="color:var(--text)">ClearSignal</strong>
+        <p>{{foot.tag}}</p>
+      </div>
+      <p>{{foot.copy}}</p>
+    </div>
+  </footer>
+
+  <div id="checkout" class="modal" hidden>
+    <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="checkout-title">
+      <header>
+        <div>
+          <h3 id="checkout-title">{{pay.title}}</h3>
+          <p class="muted" id="checkout-sub"></p>
+        </div>
+        <button class="close" type="button" data-close-modal aria-label="{{pay.close}}">×</button>
+      </header>
+      <div class="pay-grid">
+        <button class="pay-opt" id="pay-stripe" type="button">
+          <div><strong>{{pay.card}}</strong><div class="muted">{{pay.cardHint}}</div></div>
+          <span>→</span>
+        </button>
+        <button class="pay-opt" id="pay-crypto" type="button">
+          <div><strong>{{pay.crypto}}</strong><div class="muted">{{pay.cryptoHint}}</div></div>
+          <span>→</span>
+        </button>
+      </div>
+      <div class="crypto-box" id="crypto-box">
+        <p class="muted">{{pay.exact}}</p>
+        <div class="copy-row"><span class="muted">{{pay.network}}</span><code id="pay-network"></code></div>
+        <div class="copy-row"><span class="muted">{{pay.amount}}</span><code id="pay-amount"></code><button type="button" data-copy="#pay-amount">{{pay.copy}}</button></div>
+        <div class="copy-row"><span class="muted">{{pay.address}}</span><code id="pay-address"></code><button type="button" data-copy="#pay-address">{{pay.copy}}</button></div>
+        <div class="hero-actions" style="margin-top:14px">
+          <button class="btn btn-primary" id="pay-metamask" type="button">{{pay.wallet}}</button>
+          <button class="btn btn-ghost" id="pay-telegram" type="button">{{pay.telegram}}</button>
+        </div>
+        <p id="pay-hash" hidden class="copy-row"><code></code><a target="_blank" rel="noopener">explorer</a></p>
+        <p class="status" id="pay-status"></p>
+      </div>
+    </div>
+  </div>
+  <div id="toast" class="toast" role="status"></div>
+
+  <script>window.CS_I18N = {{i18n_json}};</script>
+  <script src="{{asset_prefix}}assets/js/config.js"></script>
+  <script src="{{asset_prefix}}assets/js/site.js"></script>
+  <script src="{{asset_prefix}}assets/js/pay.js"></script>
+</body>
+</html>

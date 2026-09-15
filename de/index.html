@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ClearSignal — Krypto-Trading-Signale auf Telegram</title>
+  <meta name="description" content="ClearSignal liefert geprüfte Krypto-Signale auf Telegram. Zwei Engines (KI + Regeln), 5m bis 4h, vorgeschlagenes Hebel, Hold-until-opposite. Zahlung per Stripe oder USDT auf Polygon. Kein Auto-Trading.">
+  <meta name="keywords" content="Krypto Signale, Telegram Trading Signale, BTC Signale, ETH Signale, USDT Polygon, Stripe Abo, ClearSignal">
+  <meta name="author" content="ClearSignal">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#0B0F19">
+  <link rel="canonical" href="https://afrexk0.github.io/telegram-crypto-bot/de/">
+  <link rel="alternate" hreflang="en" href="https://afrexk0.github.io/telegram-crypto-bot/">
+  <link rel="alternate" hreflang="de" href="https://afrexk0.github.io/telegram-crypto-bot/de/">
+  <link rel="alternate" hreflang="fr" href="https://afrexk0.github.io/telegram-crypto-bot/fr/">
+  <link rel="alternate" hreflang="it" href="https://afrexk0.github.io/telegram-crypto-bot/it/">
+  <link rel="alternate" hreflang="x-default" href="https://afrexk0.github.io/telegram-crypto-bot/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ClearSignal">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:title" content="ClearSignal — Krypto-Trading-Signale auf Telegram">
+  <meta property="og:description" content="ClearSignal liefert geprüfte Krypto-Signale auf Telegram. Zwei Engines (KI + Regeln), 5m bis 4h, vorgeschlagenes Hebel, Hold-until-opposite. Zahlung per Stripe oder USDT auf Polygon. Kein Auto-Trading.">
+  <meta property="og:url" content="https://afrexk0.github.io/telegram-crypto-bot/de/">
+  <meta property="og:image" content="https://afrexk0.github.io/telegram-crypto-bot/assets/img/favicon.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ClearSignal — Krypto-Trading-Signale auf Telegram">
+  <meta name="twitter:description" content="ClearSignal liefert geprüfte Krypto-Signale auf Telegram. Zwei Engines (KI + Regeln), 5m bis 4h, vorgeschlagenes Hebel, Hold-until-opposite. Zahlung per Stripe oder USDT auf Polygon. Kein Auto-Trading.">
+  <meta name="twitter:image" content="https://afrexk0.github.io/telegram-crypto-bot/assets/img/favicon.svg">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <script>document.documentElement.classList.add("js");</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"ClearSignal","url":"https://afrexk0.github.io/telegram-crypto-bot/","logo":"https://afrexk0.github.io/telegram-crypto-bot/assets/img/favicon.svg","sameAs":["https://t.me/clearsignal_trading_bot","https://t.me/clearsignal_trading"]},{"@type":"WebSite","name":"ClearSignal","url":"https://afrexk0.github.io/telegram-crypto-bot/de/","inLanguage":"de","description":"ClearSignal liefert geprüfte Krypto-Signale auf Telegram. Zwei Engines (KI + Regeln), 5m bis 4h, vorgeschlagenes Hebel, Hold-until-opposite. Zahlung per Stripe oder USDT auf Polygon. Kein Auto-Trading."},{"@type":"SoftwareApplication","name":"ClearSignal","applicationCategory":"FinanceApplication","operatingSystem":"Telegram","offers":[{"@type":"Offer","name":"Premium monthly","price":"35","priceCurrency":"USD"},{"@type":"Offer","name":"Elite monthly","price":"60","priceCurrency":"USD"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Ist das eine Anlageberatung?","acceptedAnswer":{"@type":"Answer","text":"Nein. Signale sind Marktkommentar. Fills, Risiko und Verluste liegen bei dir. Vergangenheit ist keine Prognose."}},{"@type":"Question","name":"Tradet der Bot meine Exchange?","acceptedAnswer":{"@type":"Answer","text":"Nein. Keine Exchange-API, kein Copy-Trading, keine Auszahlungsrechte. Orders legst du selbst."}},{"@type":"Question","name":"Warum kann 4h tageelang still sein?","acceptedAnswer":{"@type":"Answer","text":"Nur Richtungswechsel erzeugen Posts. Ein 4h-Trend kann viele Kerzen ohne Flip laufen. 15m und 1h sind häufiger, wenn aktiv."}},{"@type":"Question","name":"Wie aktiviert Stripe den Zugang?","acceptedAnswer":{"@type":"Answer","text":"Payment Links hostet Stripe. Nach Erfolg Thank-you-Seite, dann Telegram. Plane mitteilen, damit die Einladung kommt. Links in config.js — bis dahin USDT nutzen."}},{"@type":"Question","name":"Welches Netz für Krypto?","acceptedAnswer":{"@type":"Answer","text":"USDT auf Polygon (Chain-ID 137), Vertrag 0xc213…e8f, 6 Dezimalen. Andere Chains verifizieren nicht. Gas in POL."}},{"@type":"Question","name":"Kann ich kündigen?","acceptedAnswer":{"@type":"Answer","text":"Kein Auto-Abbuch. Zugang 7 oder 30 Tage nach Aktivierung. Danach einfach nicht verlängern."}},{"@type":"Question","name":"Unterschied zu zufälligen Telegram-Calls?","acceptedAnswer":{"@type":"Answer","text":"Indikatorregeln brauchen ein gehaltenes Profitabilitäts-Tor nach modellierten Gebühren. State pro Symbol+TF. Kein History-Dump beim Start."}},{"@type":"Question","name":"Speichert ihr die Seed-Phrase?","acceptedAnswer":{"@type":"Answer","text":"Nie. Wallet-Connect nur für USDT-Transfer. Keine Seeds, Keys oder Exchange-Passwörter."}}]}]}</script>
+</head>
+<body>
+  <a class="skip" href="#main">Zum Inhalt</a>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="orb orb-a" aria-hidden="true"></div>
+  <div class="orb orb-b" aria-hidden="true"></div>
+
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="../">
+        <img src="../assets/img/favicon.svg" alt="">
+        ClearSignal
+      </a>
+      <nav class="nav-links" aria-label="Hauptnavigation">
+        <a href="#product">Produkt</a>
+        <a href="#features">Funktionen</a>
+        <a href="#pricing">Preise</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="nav-cta">
+        <details class="lang">
+          <summary>DE</summary>
+          <div class="lang-menu">
+            <a href="../" class="">English</a>
+            <a href="./" class="is-active">Deutsch</a>
+            <a href="../fr/" class="">Français</a>
+            <a href="../it/" class="">Italiano</a>
+          </div>
+        </details>
+        <a class="btn btn-ghost" href="https://t.me/clearsignal_trading_bot">Telegram öffnen</a>
+        <a class="btn btn-primary" href="#pricing">Abonnieren</a>
+        <button class="menu-btn" type="button" aria-label="Menü">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="kicker reveal">Marktinfrastruktur in Telegram</p>
+          <h1 class="reveal">Signale mit der<br>Ruhe einer Schlusskerze.<span>Die Kontrolle bleibt bei dir.</span></h1>
+          <p class="lede reveal">ClearSignal sendet LONG- und SHORT-Ideen, wenn eine geprüfte Engine die Richtung wechselt. Vorgeschlagener Hebel, Signalkerze, halten bis zum Gegensignal. Karte über Stripe oder USDT auf Polygon. Nichts wird automatisch ausgeführt.</p>
+          <div class="hero-actions reveal">
+            <a class="btn btn-primary" href="#pricing">Pläne ansehen</a>
+            <a class="btn btn-ghost" href="https://t.me/clearsignal_trading">Free-Kanal</a>
+          </div>
+          <div class="hero-meta reveal">
+            <div><strong>5m–4h</strong>Zeitrahmen</div>
+            <div><strong>USDT</strong>Polygon-Transfer</div>
+            <div><strong>0 Auto</strong>Kein Bot auf deinem Konto</div>
+          </div>
+        </div>
+        <aside class="device reveal" aria-label="Beispiel-Signalkarte">
+          <div class="device-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+          <article class="signal">
+            <div class="signal-head">
+              <span class="pill pill-dim">ELITE SIGNAL</span>
+              <span class="pill pill-long">LONG</span>
+            </div>
+            <h3>BTC/USDT (1h)</h3>
+            <dl>
+              <div><dt>Einstieg</dt><dd>78431.64</dd></div>
+              <div><dt>Hebel-Vorschlag</dt><dd>8x</dd></div>
+              <div><dt>Signalkerze</dt><dd>2026-08-30 21:00 UTC</dd></div>
+              <div><dt>Lebenszyklus</dt><dd>Bis Gegensignal</dd></div>
+            </dl>
+          </article>
+        </aside>
+      </div>
+    </section>
+
+    <div class="marquee-wrap" aria-hidden="true">
+      <div class="marquee">
+        <span><b>BTC</b> · USDT</span><span><b>ETH</b> · USDT</span><span><b>SOL</b> · USDT</span>
+        <span><b>XRP</b> · USDT</span><span><b>AVAX</b> · USDT</span><span><b>UNI</b> · USDT</span>
+        <span><b>SUI</b> · USDT</span><span><b>NEAR</b> · USDT</span><span><b>TRX</b> · USDT</span>
+        <span><b>ADA</b> · 5m</span><span><b>DOT</b> · 15m</span><span>4h · 1h · 15m · 5m</span>
+        <span><b>BTC</b> · USDT</span><span><b>ETH</b> · USDT</span><span><b>SOL</b> · USDT</span>
+        <span><b>XRP</b> · USDT</span><span><b>AVAX</b> · USDT</span><span><b>UNI</b> · USDT</span>
+        <span><b>SUI</b> · USDT</span><span><b>NEAR</b> · USDT</span><span><b>TRX</b> · USDT</span>
+        <span><b>ADA</b> · 5m</span><span><b>DOT</b> · 15m</span><span>4h · 1h · 15m · 5m</span>
+      </div>
+    </div>
+
+    <section class="section" id="product">
+      <div class="wrap split">
+        <div class="reveal">
+          <p class="kicker">Ablauf</p>
+          <h2>Schluss. Flip. Nachricht.</h2>
+          <p class="lede">Jedes aktivierte Paar und jeder Zeitrahmen läuft nur auf geschlossenen Kerzen. Wechselt die Live-Regel die Richtung, kommt ein Telegram-Signal. Gleiche Richtung bleibt still — kein Spam.</p>
+        </div>
+        <ol class="feature-grid" style="grid-template-columns:1fr 1fr">
+          <li class="card reveal"><div class="icon">01</div><h3>Geschlossene Kerzen</h3><p>Offene Bars entfallen, damit Live und Backtest zusammenpassen. 5m, 15m, 1h und 4h haben eigene Takte.</p></li>
+          <li class="card reveal"><div class="icon">02</div><h3>Richtungswechsel</h3><p>Long oder Short bis zum Gegensignal. CLOSE enthält das Hebel-Ergebnis zum Vorschlagshebel, danach die neue Seite.</p></li>
+          <li class="card reveal"><div class="icon">03</div><h3>Gestufte Kanäle</h3><p>BTC und ETH an Free, Premium und Elite. Alts an Premium und Elite; Free erhält einen Teaser, nicht den Einstieg.</p></li>
+          <li class="card reveal"><div class="icon">04</div><h3>Du führst aus</h3><p>Einstieg, Hebelvorschlag und Kerzenzeit stehen in der Nachricht. Keine API-Keys. Kein Exchange-Login.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <div class="wrap">
+        <div class="reveal">
+          <p class="kicker">Funktionen</p>
+          <h2>Gebaut wie Infrastruktur, nicht wie ein Hype-Feed.</h2>
+          <p class="lede">Jede Live-Regel ist nach Gebühren und Slippage auf gehaltenen Testdaten geprüft. Eine Sprache: halten bis zum Gegensignal.</p>
+        </div>
+        <div class="feature-grid" style="margin-top:36px">
+          <article class="card reveal"><div class="icon">⟳</div><h3>Halten bis Gegensignal</h3><p>Eine offene Idee pro Symbol und Zeitrahmen. Die nächste Nachricht ist eine echte Umkehr.</p></article>
+          <article class="card reveal"><div class="icon">×</div><h3>Vorgeschlagener Hebel</h3><p>Aus ATR% und Stopp-Abstand, gerundet auf 2–50× — die Größe folgt der Volatilität.</p></article>
+          <article class="card reveal"><div class="icon">◈</div><h3>Zwei Engines</h3><p>LSTM-Pfad für freigegebene KI-Produktion plus regelbasiertes System (Momentum, Supertrend, Donchian) mit eingefrorenen Parametern.</p></article>
+          <article class="card reveal"><div class="icon">⏱</div><h3>Mehrere Zeitrahmen</h3><p>5m und 15m für Tempo, 1h und 4h für Struktur. Lookbacks skalieren mit Balkenlänge und Tagesvol.</p></article>
+          <article class="card reveal"><div class="icon">◎</div><h3>Liquides USDT-Universum</h3><p>Majors zuerst, dann liquide Alts nach 24h-Volumen. Stables, Hebel-Token und Gold-Wrapper draußen.</p></article>
+          <article class="card reveal"><div class="icon">▣</div><h3>Kanalarchitektur</h3><p>Free / Premium / Elite. Untere Stufen können Teaser erhalten, wenn sie nicht auf der Zielliste stehen.</p></article>
+          <article class="card reveal"><div class="icon">⌘</div><h3>Close + PnL</h3><p>Beim Flip: CLOSE NOW mit Einstieg, Exit, Hebel, WIN/LOSS auf diesem Hebel und Spot-Move.</p></article>
+          <article class="card reveal"><div class="icon">✓</div><h3>Out-of-sample-Tor</h3><p>Parameter nur auf Train/Inner-Val. Live nur bei bestandener gehaltenen Prüfung (Erwartungswert, PF, Drawdown, Folds).</p></article>
+          <article class="card reveal"><div class="icon">⬡</div><h3>Gebührenbewusst</h3><p>0,26 % Round-Trip im Backtest. Momentum braucht Bewegung gegen Vol plus Gebührenboden.</p></article>
+          <article class="card reveal"><div class="icon">◻</div><h3>Kein Auto-Abo</h3><p>Fenster von 7 oder 30 Tagen. Danach endet der Zugang. Verlängern ist freiwillig.</p></article>
+          <article class="card reveal"><div class="icon">₿</div><h3>Stripe oder USDT</h3><p>Karte über Stripe Payment Links oder USDT-Transfer auf Polygon. Aktivierung in Telegram mit Tx-Hash.</p></article>
+          <article class="card reveal"><div class="icon">✉</div><h3>Telegram-nativ</h3><p>Die Website ist das Schaufenster. Lieferung, Einladungen und Support bleiben in Telegram.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="engines">
+      <div class="wrap">
+        <div class="reveal">
+          <p class="kicker">Zwei Systeme, ein Format</p>
+          <h2>KI wo sie freigegeben ist. Regeln wo sie das Tor schaffen.</h2>
+          <p class="lede">Die Posts sehen absichtlich gleich aus. State ist getrennt, damit sich die Engines nicht überschreiben.</p>
+        </div>
+        <div class="engines" style="margin-top:36px">
+          <article class="card engine reveal">
+            <p class="kicker">LSTM</p>
+            <h3>Neuraler Pfad</h3>
+            <p class="muted">Sequenzmodelle auf OHLCV-Features. Nur profitable, freigegebene Checkpoints dürfen live — Fehl-Läufe überschreiben Produktion nicht.</p>
+            <ul>
+              <li>Feature-Fenster mit Untergrenzen, damit 4h/1d nicht auf Varianz 0 fallen.</li>
+              <li>Held-out mit Gebühren und Slippage vor Live.</li>
+              <li>Checkpoints pro Symbol und Intervall (z. B. BTCUSDT 1h).</li>
+              <li>Dasselbe Signal-Objekt: Einstieg, Hebel, Kerzenzeit.</li>
+              <li>Kein Finanzrat, kein Execution-Bot.</li>
+            </ul>
+          </article>
+          <article class="card engine reveal">
+            <p class="kicker">Rules</p>
+            <h3>Indikator-Pfad</h3>
+            <p class="muted">Lookbacks in Marktzeit (~6h–12d), ATR-Böden je Serie, Supertrend-Breite aus Vol, Donchian auf langsameren Bars.</p>
+            <ul>
+              <li>Familien: Momentum, Supertrend, Donchian (1h+). Mean-Reversion nicht live nach OOS-Fail.</li>
+              <li>Innere Validierung, dann eingefrorener Test. Nur gate_pass wird aktiviert.</li>
+              <li>Live max. 1000 Klines — Fenster passen zu Binance.</li>
+              <li>Erster Start setzt Cursor, kein History-Dump.</li>
+              <li>Eigene Cursor und Live-State unter indicator_system/state.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="coverage">
+      <div class="wrap split">
+        <div class="reveal">
+          <p class="kicker">Abdeckung</p>
+          <h2>Majors auf jedem Screen. Alts, wo sie es verdient haben.</h2>
+          <p class="lede">Aktiv sind Regeln mit bestandenem Verify — keine beliebige Watchlist.</p>
+        </div>
+        <div class="reveal">
+          <p class="muted">Zeitrahmen</p>
+          <div class="pills">
+            <span class="chip">5m</span><span class="chip">15m</span>
+            <span class="chip">1h</span><span class="chip">4h</span>
+          </div>
+          <p class="muted" style="margin-top:28px">Beispiele im Live-Indikatorbuch</p>
+          <div class="pills">
+            <span class="chip">BTC</span><span class="chip">ETH</span><span class="chip">SOL</span>
+            <span class="chip">XRP</span><span class="chip">AVAX</span><span class="chip">UNI</span>
+            <span class="chip">SUI</span><span class="chip">NEAR</span><span class="chip">TRX</span>
+            <span class="chip">ADA</span><span class="chip">DOT</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pricing">
+      <div class="wrap">
+        <div class="pricing-intro reveal">
+          <p class="kicker">Preise</p>
+          <h2>Wöchentlich zum Testen. Monatlich, wenn es passt.</h2>
+          <p class="lede">Einmalige Fenster. Kein Auto-Renew. Elite enthält Premium. Beträge in USD / USDT.</p>
+        </div>
+        <div class="billing reveal" role="tablist" aria-label="Abrechnungszeitraum">
+          <button type="button" data-billing="week">Wöchentlich</button>
+          <button type="button" data-billing="month" class="is-on">Monatlich</button>
+        </div>
+        <p class="muted pricing-save" data-save>Monatlich ist der bessere Satz.</p>
+        <div class="price-grid">
+          <article class="card price reveal">
+            <span class="pill pill-dim">Free</span>
+            <h3>Beobachten</h3>
+            <div class="amount">$0<small> dauerhaft</small></div>
+            <p class="muted">BTC- &amp; ETH-Struktur, geringere Dichte.</p>
+            <ul class="matrix">
+              <li data-state="yes"><span>Öffentliche / Free-Signale</span><em>Ja</em></li>
+              <li data-state="lim"><span>Volles Premium-Buch (Alts + Majors)</span><em>Begrenzt</em></li>
+              <li data-state="no"><span>Früheres Routing vs. Free-Teaser</span><em>Nein</em></li>
+              <li data-state="no"><span>Elite-only Paare und Dichte</span><em>Nein</em></li>
+              <li data-state="no"><span>Priority-Support</span><em>Nein</em></li>
+              <li data-state="no"><span>Höchste Analysten-Extras (im Produkt)</span><em>Nein</em></li>
+              <li data-state="yes"><span>Kein Auto-Trading deiner Exchange</span><em>Ja</em></li>
+            </ul>
+            <a class="btn btn-ghost btn-wide" href="https://t.me/clearsignal_trading">Free beitreten</a>
+          </article>
+          <article class="card price reveal">
+            <span class="pill pill-dim">Premium</span>
+            <h3>Premium</h3>
+            <div class="amount" data-price-week="12" data-price-month="35">$35<small> /mo</small></div>
+            <p class="muted">Direkt einsteigen.</p>
+            <ul class="matrix">
+              <li data-state="yes"><span>Öffentliche / Free-Signale</span><em>Ja</em></li>
+              <li data-state="yes"><span>Volles Premium-Buch (Alts + Majors)</span><em>Ja</em></li>
+              <li data-state="yes"><span>Früheres Routing vs. Free-Teaser</span><em>Ja</em></li>
+              <li data-state="no"><span>Elite-only Paare und Dichte</span><em>Nein</em></li>
+              <li data-state="yes"><span>Priority-Support</span><em>Ja</em></li>
+              <li data-state="no"><span>Höchste Analysten-Extras (im Produkt)</span><em>Nein</em></li>
+              <li data-state="yes"><span>Kein Auto-Trading deiner Exchange</span><em>Ja</em></li>
+            </ul>
+            <button class="btn btn-ghost btn-wide" type="button" data-plan-tier="premium" data-plan="PREMIUM_MONTH">Weiter · Premium</button>
+          </article>
+          <article class="card price featured reveal">
+            <span class="pill pill-elite">Elite</span>
+            <h3>Elite</h3>
+            <div class="amount" data-price-week="20" data-price-month="60">$60<small> /mo</small></div>
+            <p class="muted">Unser Bestes.</p>
+            <ul class="matrix">
+              <li data-state="yes"><span>Öffentliche / Free-Signale</span><em>Ja</em></li>
+              <li data-state="yes"><span>Volles Premium-Buch (Alts + Majors)</span><em>Ja</em></li>
+              <li data-state="yes"><span>Früheres Routing vs. Free-Teaser</span><em>Ja</em></li>
+              <li data-state="yes"><span>Elite-only Paare und Dichte</span><em>Ja</em></li>
+              <li data-state="yes"><span>Priority-Support</span><em>Ja</em></li>
+              <li data-state="yes"><span>Höchste Analysten-Extras (im Produkt)</span><em>Ja</em></li>
+              <li data-state="yes"><span>Kein Auto-Trading deiner Exchange</span><em>Ja</em></li>
+            </ul>
+            <button class="btn btn-primary btn-wide" type="button" data-plan-tier="elite" data-plan="ELITE_MONTH">Weiter · Elite</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pay">
+      <div class="wrap">
+        <div class="reveal">
+          <p class="kicker">Zahlung</p>
+          <h2>Karte bei Stripe. Krypto als Polygon-Transfer.</h2>
+          <p class="lede">Statische GitHub Pages — kein Server auf einem Heim-PC. Stripe hostet die Kartensitzung. USDT ist ein On-Chain-Transfer. Telegram bleibt die Aktivierung.</p>
+        </div>
+        <div class="pay-methods" style="margin-top:28px">
+          <article class="card reveal">
+            <h3>Stripe</h3>
+            <p class="muted">Apple Pay, Karten und Link auf Stripe-Payment-Links. Danach zurück und Telegram öffnen, damit der Plan freigeschaltet wird.</p>
+            <ol class="steps">
+              <li>Premium oder Elite, Woche oder Monat.</li>
+              <li>Auf der Stripe-Seite zahlen (keine Kartendaten auf dieser Site).</li>
+              <li>Bot öffnen und Aktivierung mit Beleg / Plan abschließen.</li>
+            </ol>
+          </article>
+          <article class="card reveal">
+            <h3>USDT-Transfer</h3>
+            <p class="muted">Genauen USDT-Betrag auf Polygon senden. Hash im Telegram-Bot einfügen — derselbe Verifier wie für MetaMask.</p>
+            <ol class="steps">
+              <li>Betrag und Adresse kopieren oder Wallet verbinden.</li>
+              <li>ERC-20-USDT nur auf Polygon — nicht ETH-Mainnet.</li>
+              <li>Telegram, 0x-Hash einfügen, automatische Prüfung abwarten.</li>
+            </ol>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="wrap faq">
+        <div class="reveal">
+          <p class="kicker">FAQ</p>
+          <h2>Klare Antworten</h2>
+        </div>
+        <details class="reveal">
+          <summary>Ist das eine Anlageberatung?</summary>
+          <div class="faq-body"><div class="faq-body-inner"><p>Nein. Signale sind Marktkommentar. Fills, Risiko und Verluste liegen bei dir. Vergangenheit ist keine Prognose.</p></div></div>
+        </details>
+        <details class="reveal">
+          <summary>Tradet der Bot meine Exchange?</summary>
+          <div class="faq-body"><div class="faq-body-inner"><p>Nein. Keine Exchange-API, kein Copy-Trading, keine Auszahlungsrechte. Orders legst du selbst.</p></div></div>
+        </details>
+        <details class="reveal">
+          <summary>Warum kann 4h tageelang still sein?</summary>
+          <div class="faq-body"><div class="faq-body-inner"><p>Nur Richtungswechsel erzeugen Posts. Ein 4h-Trend kann viele Kerzen ohne Flip laufen. 15m und 1h sind häufiger, wenn aktiv.</p></div></div>
+        </details>
+        <details class="reveal">
+          <summary>Wie aktiviert Stripe den Zugang?</summary>
+          <div class="faq-body"><div class="faq-body-inner"><p>Payment Links hostet Stripe. Nach Erfolg Thank-you-Seite, dann Telegram. Plane mitteilen, damit die Einladung kommt. Links in config.js — bis dahin USDT nutzen.</p></div></div>
+        </details>
+        <details class="reveal">
+          <summary>Welches Netz für Krypto?</summary>
+          <div class="faq-body"><div class="faq-body-inner"><p>USDT auf Polygon (Chain-ID 137), Vertrag 0xc213…e8f, 6 Dezimalen. Andere Chains verifizieren nicht. Gas in POL.</p></div></div>
+        </details>
+        <details class="reveal">
+          <summary>Kann ich kündigen?</summary>
+          <div class="faq-body"><div class="faq-body-inner"><p>Kein Auto-Abbuch. Zugang 7 oder 30 Tage nach Aktivierung. Danach einfach nicht verlängern.</p></div></div>
+        </details>
+        <details class="reveal">
+          <summary>Unterschied zu zufälligen Telegram-Calls?</summary>
+          <div class="faq-body"><div class="faq-body-inner"><p>Indikatorregeln brauchen ein gehaltenes Profitabilitäts-Tor nach modellierten Gebühren. State pro Symbol+TF. Kein History-Dump beim Start.</p></div></div>
+        </details>
+        <details class="reveal">
+          <summary>Speichert ihr die Seed-Phrase?</summary>
+          <div class="faq-body"><div class="faq-body-inner"><p>Nie. Wallet-Connect nur für USDT-Transfer. Keine Seeds, Keys oder Exchange-Passwörter.</p></div></div>
+        </details>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="risk">
+          <h3>Risiko</h3>
+          <p>Krypto ist volatil. Hebel kann Konten zerstören. ClearSignal verspricht keinen Gewinn, verwaltet keine Gelder und ist kein Broker. Nur Kapital einsetzen, das du verlieren kannst. Adressen, Netze und Stripe-URLs selbst prüfen.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <div>
+        <strong style="color:var(--text)">ClearSignal</strong>
+        <p>Telegram-Signale. Statischer Checkout. Du führst aus.</p>
+      </div>
+      <p>© ClearSignal. Keine Anlageberatung. GitHub-Pages-Frontend — kein Trading-Backend auf diesem Host.</p>
+    </div>
+  </footer>
+
+  <div id="checkout" class="modal" hidden>
+    <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="checkout-title">
+      <header>
+        <div>
+          <h3 id="checkout-title">Checkout</h3>
+          <p class="muted" id="checkout-sub"></p>
+        </div>
+        <button class="close" type="button" data-close-modal aria-label="Schließen">×</button>
+      </header>
+      <div class="pay-grid">
+        <button class="pay-opt" id="pay-stripe" type="button">
+          <div><strong>Karte · Stripe</strong><div class="muted">Apple Pay, Karten, Link</div></div>
+          <span>→</span>
+        </button>
+        <button class="pay-opt" id="pay-crypto" type="button">
+          <div><strong>USDT · Polygon-Transfer</strong><div class="muted">Exakter Betrag, dann in Telegram aktivieren</div></div>
+          <span>→</span>
+        </button>
+      </div>
+      <div class="crypto-box" id="crypto-box">
+        <p class="muted">Exakten Betrag senden. Falsches Netz oder Betrag wird nicht erkannt.</p>
+        <div class="copy-row"><span class="muted">Netz</span><code id="pay-network"></code></div>
+        <div class="copy-row"><span class="muted">Betrag</span><code id="pay-amount"></code><button type="button" data-copy="#pay-amount">Kopieren</button></div>
+        <div class="copy-row"><span class="muted">Adresse</span><code id="pay-address"></code><button type="button" data-copy="#pay-address">Kopieren</button></div>
+        <div class="hero-actions" style="margin-top:14px">
+          <button class="btn btn-primary" id="pay-metamask" type="button">Mit Wallet senden</button>
+          <button class="btn btn-ghost" id="pay-telegram" type="button">Telegram öffnen</button>
+        </div>
+        <p id="pay-hash" hidden class="copy-row"><code></code><a target="_blank" rel="noopener">explorer</a></p>
+        <p class="status" id="pay-status"></p>
+      </div>
+    </div>
+  </div>
+  <div id="toast" class="toast" role="status"></div>
+
+  <script>window.CS_I18N = {"pay": {"title": "Checkout", "close": "Schließen", "sub": "{amount} USDT · {days} Tage Zugang", "card": "Karte · Stripe", "cardHint": "Apple Pay, Karten, Link", "cardSoon": "Payment Links in config.js eintragen", "crypto": "USDT · Polygon-Transfer", "cryptoHint": "Exakter Betrag, dann in Telegram aktivieren", "exact": "Exakten Betrag senden. Falsches Netz oder Betrag wird nicht erkannt.", "network": "Netz", "amount": "Betrag", "address": "Adresse", "copy": "Kopieren", "wallet": "Mit Wallet senden", "telegram": "Telegram öffnen", "copied": "Kopiert", "noStripe": "Stripe-Links fehlen noch. USDT nutzen oder Telegram öffnen.", "noWallet": "Keine Wallet. Adresse kopieren oder MetaMask installieren.", "connecting": "Wallet wird verbunden…", "confirm": "USDT-Transfer bestätigen…", "sent": "Gesendet. Hash in Telegram einfügen: ", "rejected": "Transaktion abgebrochen."}, "plans": {"PREMIUM_WEEK": {"name": "Premium · Wöchentlich"}, "PREMIUM_MONTH": {"name": "Premium · Monatlich"}, "ELITE_WEEK": {"name": "Elite · Wöchentlich"}, "ELITE_MONTH": {"name": "Elite · Monatlich"}}};</script>
+  <script src="../assets/js/config.js"></script>
+  <script src="../assets/js/site.js"></script>
+  <script src="../assets/js/pay.js"></script>
+</body>
+</html>
