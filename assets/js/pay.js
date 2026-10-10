@@ -20,6 +20,17 @@
     }, 2500);
   };
 
+  const openUrl = (url) => {
+    if (!url) return false;
+    try {
+      window.location.href = url;
+      return true;
+    } catch (error) {
+      window.open(url, "_blank", "noopener,noreferrer");
+      return true;
+    }
+  };
+
   const refreshCheckoutLabel = () => {
     const sub = document.getElementById("checkout-sub");
     const plan = getSelectedPlan();
@@ -37,33 +48,27 @@
     const cfg = window.CS_CONFIG || {};
     const plan = getSelectedPlan();
     const base = cfg.telegramPaymentLink || cfg.telegramBotStart || "https://t.me/clearsignal_trading_bot?start=subscribe";
-    let url;
-    try {
-      url = new URL(base);
-    } catch {
-      url = new URL("https://t.me/clearsignal_trading_bot");
-      url.searchParams.set("start", "subscribe");
-    }
+    const url = new URL(base, window.location.href);
+    url.searchParams.set("start", "subscribe");
     url.searchParams.set("plan", plan);
-    if (modal) {
-      modal.hidden = true;
-    }
-    window.open(url.toString(), "_blank", "noopener,noreferrer");
+
+    if (modal) modal.hidden = true;
+    openUrl(url.toString());
   };
 
   const openWhopCheckout = () => {
     const cfg = window.CS_CONFIG || {};
     const plan = getSelectedPlan();
     const link = cfg.whop && cfg.whop[plan];
+
     if (link) {
-      window.open(link, "_blank", "noopener,noreferrer");
       if (modal) modal.hidden = true;
+      openUrl(link);
       return;
     }
 
-    const message = (window.CS_I18N && window.CS_I18N.pay && window.CS_I18N.pay.noStripe)
-      || "Whop checkout link is not configured yet. Use Telegram.";
-    showToast(message);
+    const msg = "Whop checkout link is not configured yet. Add it in assets/js/config.js or use Telegram.";
+    showToast(msg);
   };
 
   closeBtns.forEach((btn) => {
@@ -73,26 +78,24 @@
   });
 
   planButtons.forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      selectedPlan = btn.dataset.plan || (btn.dataset.planTier.toUpperCase() + "_" + (window.CS_BILLING && window.CS_BILLING() || "MONTH"));
+    btn.addEventListener("click", (event) => {
+      event.preventDefault();
+      selectedPlan = btn.dataset.plan || btn.dataset.planTier.toUpperCase() + "_MONTH";
       refreshCheckoutLabel();
-      if (modal) {
-        modal.hidden = false;
-      }
+      if (modal) modal.hidden = false;
     });
   });
 
   if (whopBtn) {
-    whopBtn.addEventListener("click", (e) => {
-      e.preventDefault();
+    whopBtn.addEventListener("click", (event) => {
+      event.preventDefault();
       openWhopCheckout();
     });
   }
 
   if (directTelegramBtn) {
-    directTelegramBtn.addEventListener("click", (e) => {
-      e.preventDefault();
+    directTelegramBtn.addEventListener("click", (event) => {
+      event.preventDefault();
       openTelegramPurchase();
     });
   }
