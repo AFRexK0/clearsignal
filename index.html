@@ -32,7 +32,7 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/site.css">
   <script>document.documentElement.classList.add("js");</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"ClearSignal","url":"https://afrexk0.github.io/telegram-crypto-bot/","logo":"https://afrexk0.github.io/telegram-crypto-bot/assets/img/favicon.svg","sameAs":["https://t.me/clearsignal_trading_bot","https://t.me/clearsignal_trading"]},{"@type":"WebSite","name":"ClearSignal","url":"https://afrexk0.github.io/telegram-crypto-bot/","inLanguage":"en","description":"ClearSignal delivers verified crypto signals to Telegram. Dual engines (AI + rules), 5m to 4h, suggested leverage, hold-until-opposite. Pay with Whop or USDT on Polygon. No auto-trading."},{"@type":"SoftwareApplication","name":"ClearSignal","applicationCategory":"FinanceApplication","operatingSystem":"Telegram","offers":[{"@type":"Offer","name":"Signal Room Monthly","price":"39","priceCurrency":"USD"},{"@type":"Offer","name":"Signal Room Yearly","price":"390","priceCurrency":"USD"},{"@type":"Offer","name":"Signal Circle Monthly","price":"78","priceCurrency":"USD"},{"@type":"Offer","name":"Signal Circle Yearly","price":"780","priceCurrency":"USD"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is this financial advice?","acceptedAnswer":{"@type":"Answer","text":"No. Signals are educational market commentary. You are responsible for fills, risk, and losses. Past results do not predict the future."}},{"@type":"Question","name":"Does the bot trade my exchange?","acceptedAnswer":{"@type":"Answer","text":"No. There is no exchange API, no copy-trading hook, and no withdrawal permission. You place orders yourself."}},{"@type":"Question","name":"Why can 4h stay quiet for days?","acceptedAnswer":{"@type":"Answer","text":"Hold-until-opposite only posts on a direction change. A 4h trend can run many candles without a flip. 15m and 1h print more often when those rules are enabled."}},{"@type":"Question","name":"How do Whop payments activate access?","acceptedAnswer":{"@type":"Answer","text":"Whop checkout links are hosted by Whop. After success you land on a thank-you page and open Telegram. Paste or message the plan you paid so the operator / bot can issue the invite. Links are configured in website/assets/js/config.js — until they are set, use USDT."}},{"@type":"Question","name":"Which network for crypto?","acceptedAnswer":{"@type":"Answer","text":"USDT on Polygon (chain id 137), contract 0xc213…e8f, six decimals. Other chains will not verify. Gas is paid in POL."}},{"@type":"Question","name":"Can I cancel?","acceptedAnswer":{"@type":"Answer","text":"There is no subscription auto-charge. Access lasts 30 days (Monthly) or 365 days (Yearly) from a successful activation, then you simply do not renew."}},{"@type":"Question","name":"What is the difference vs random Telegram calls?","acceptedAnswer":{"@type":"Answer","text":"Indicator rules must pass a held-out profitability gate after modeled fees. Live state is per symbol+timeframe. First start does not replay history into the channel."}},{"@type":"Question","name":"Do you store my seed phrase?","acceptedAnswer":{"@type":"Answer","text":"Never. Wallet connect only requests a USDT transfer. The site never asks for a seed, private key, or exchange password."}}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"ClearSignal","url":"https://afrexk0.github.io/telegram-crypto-bot/","logo":"https://afrexk0.github.io/telegram-crypto-bot/assets/img/favicon.svg","sameAs":["https://t.me/clearsignal_trading_bot","https://t.me/clearsignal_trading"]},{"@type":"WebSite","name":"ClearSignal","url":"https://afrexk0.github.io/telegram-crypto-bot/","inLanguage":"en","description":"ClearSignal delivers verified crypto signals to Telegram. Dual engines (AI + rules), 5m to 4h, suggested leverage, hold-until-opposite. Pay with Whop or USDT on Polygon. No auto-trading."},{"@type":"SoftwareApplication","name":"ClearSignal","applicationCategory":"FinanceApplication","operatingSystem":"Telegram","offers":[{"@type":"Offer","name":"Signal Room Monthly","price":"39","priceCurrency":"USD"},{"@type":"Offer","name":"Signal Room Yearly","price":"390","priceCurrency":"USD"},{"@type":"Offer","name":"Signal Circle Monthly","price":"78","priceCurrency":"USD"},{"@type":"Offer","name":"Signal Circle Yearly","price":"780","priceCurrency":"USD"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is this financial advice?","acceptedAnswer":{"@type":"Answer","text":"No. Signals are educational market commentary. You are responsible for fills, risk, and losses. Past results do not predict the future."}},{"@type":"Question","name":"Does the bot trade my exchange?","acceptedAnswer":{"@type":"Answer","text":"No. There is no exchange API, no copy-trading hook, and no withdrawal permission. You place orders yourself."}},{"@type":"Question","name":"Why can 4h stay quiet for days?","acceptedAnswer":{"@type":"Answer","text":"Hold-until-opposite only posts on a direction change. A 4h trend can run many candles without a flip. 15m and 1h print more often when those rules are enabled."}},{"@type":"Question","name":"How do Whop payments activate access?","acceptedAnswer":{"@type":"Answer","text":"Whop checkout links are hosted by Whop. After success you land on a thank-you page and open Telegram. Paste or message the plan you paid so the operator / bot can issue the invite. Links are configured in website/assets/js/config.js — until they are set, use USDT."}},{"@type":"Question","name":"Which network for crypto?","acceptedAnswer":{"@type":"Answer","text":"USDT on Polygon (chain id 137), contract 0xc213…e8f, six decimals. Other chains will not verify. Gas is paid in POL."}},{"@type":"Question","name":"Can I cancel?","acceptedAnswer":{"@type":"Answer","text":"There is no subscription auto-charge. Access lasts 30 days (Monthly) or 365 days (Yearly) from a successful activation, then you simply do not renew."}},{"@type":"Question","name":"What is the difference vs random Telegram calls?","acceptedAnswer":{"@type":"Answer","text":"Indicator rules must pass a held-out profitability gate after modeled fees. Live state is per symbol+timeframe. First start does not replay history into the channel."}},{"@type":"Question","name":"Do you store my seed phrase?","acceptedAnswer":{"@type":"Answer","text":"Never. This site never connects to your wallet. It never asks for a seed, private key, or exchange password."}}]}]}</script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -152,7 +152,7 @@
           <article class="card reveal"><div class="icon">✓</div><h3>Out-of-sample gate</h3><p>Indicator params are chosen on train/inner-val only. Live enablement requires a passing held-out gate (expectancy, PF, drawdown, walk-forward folds).</p></article>
           <article class="card reveal"><div class="icon">⬡</div><h3>Fee-aware logic</h3><p>Round-trip cost of 0.26% is in the backtest. Momentum needs move vs volatility plus a fee floor so 5m noise does not become a signal.</p></article>
           <article class="card reveal"><div class="icon">◻</div><h3>No auto-renewal</h3><p>Each plan is a one-time window (30 or 365 days). Access ends on expiry. Renew when you want — no hidden card on file from us.</p></article>
-          <article class="card reveal"><div class="icon">₿</div><h3>Whop or USDT</h3><p>Card checkout via Whop checkout links, or an on-chain USDT transfer on Polygon (MetaMask / copy address). Activate in Telegram with the tx hash.</p></article>
+          <article class="card reveal"><div class="icon">₿</div><h3>Whop or USDT</h3><p>Card checkout via Whop checkout links, or USDT on Polygon paid inside the Telegram bot. Activate in Telegram with the tx hash.</p></article>
           <article class="card reveal"><div class="icon">✉</div><h3>Telegram-native</h3><p>The product lives where traders already are. This website is the storefront; delivery, invites, and support stay in Telegram.</p></article>
         </div>
       </div>
@@ -288,7 +288,7 @@
         <div class="reveal">
           <p class="kicker">Checkout</p>
           <h2>Card on Whop. Crypto as a Polygon transfer.</h2>
-          <p class="lede">This site is static GitHub Pages. There is no server on a home PC. Whop hosts the card session. USDT is a normal on-chain transfer to the published wallet. Telegram remains the activation desk.</p>
+          <p class="lede">This site is static GitHub Pages. There is no server on a home PC. Whop hosts the card session. USDT payments are handled inside the Telegram bot. Telegram remains the activation desk.</p>
         </div>
         <div class="pay-methods" style="margin-top:28px">
           <article class="card reveal">
@@ -302,11 +302,11 @@
           </article>
           <article class="card reveal">
             <h3>USDT transfer</h3>
-            <p class="muted">Send the exact USDT amount on Polygon (low fees). Then paste the transaction hash in the Telegram bot — the same verifier that already runs for MetaMask payments.</p>
+            <p class="muted">Crypto payments happen inside the Telegram bot. It shows the wallet address and exact amount, then verifies your USDT transaction on Polygon automatically.</p>
             <ol class="steps">
-              <li>Copy amount and address, or connect a wallet on this page.</li>
-              <li>Confirm the ERC-20 USDT transfer on Polygon only — not ETH mainnet.</li>
-              <li>Open Telegram, paste the 0x hash, wait for automated verification.</li>
+              <li>Tap Crypto in checkout. The Telegram bot opens with your plan selected.</li>
+              <li>Send the exact USDT amount on Polygon only — not ETH mainnet.</li>
+              <li>Paste the 0x hash in the bot and wait for automated verification.</li>
             </ol>
           </article>
         </div>
@@ -349,7 +349,7 @@
         </details>
         <details class="reveal">
           <summary>Do you store my seed phrase?</summary>
-          <div class="faq-body"><div class="faq-body-inner"><p>Never. Wallet connect only requests a USDT transfer. The site never asks for a seed, private key, or exchange password.</p></div></div>
+          <div class="faq-body"><div class="faq-body-inner"><p>Never. This site never connects to your wallet. It never asks for a seed, private key, or exchange password.</p></div></div>
         </details>
       </div>
     </section>
@@ -389,29 +389,17 @@
           <span>→</span>
         </button>
         <button class="pay-opt" id="pay-crypto" type="button">
-          <div><strong>USDT · Polygon transfer</strong><div class="muted">Exact amount, then activate in Telegram</div></div>
+          <div><strong>Crypto · Telegram bot</strong><div class="muted">Pay with USDT inside the bot</div></div>
           <span>→</span>
         </button>
-      </div>
-      <div class="crypto-box" id="crypto-box">
-        <p class="muted">Send the exact amount. Wrong network or amount will not verify.</p>
-        <div class="copy-row"><span class="muted">Network</span><code id="pay-network"></code></div>
-        <div class="copy-row"><span class="muted">Amount</span><code id="pay-amount"></code><button type="button" data-copy="#pay-amount">Copy</button></div>
-        <div class="copy-row"><span class="muted">Address</span><code id="pay-address"></code><button type="button" data-copy="#pay-address">Copy</button></div>
-        <div class="hero-actions" style="margin-top:14px">
-          <button class="btn btn-primary" id="pay-metamask" type="button">Send with wallet</button>
-          <button class="btn btn-ghost" id="pay-telegram" type="button">Open Telegram</button>
-        </div>
-        <p id="pay-hash" hidden class="copy-row"><code></code><a target="_blank" rel="noopener">explorer</a></p>
-        <p class="status" id="pay-status"></p>
       </div>
     </div>
   </div>
   <div id="toast" class="toast" role="status"></div>
 
-  <script>window.CS_I18N = {"pay": {"title": "Checkout", "close": "Close", "sub": "{amount} USDT · {days} days access", "card": "Card · Whop", "cardHint": "Apple Pay, cards, Link", "cardSoon": "Add checkout links in config.js", "crypto": "USDT · Polygon transfer", "cryptoHint": "Exact amount, then activate in Telegram", "exact": "Send the exact amount. Wrong network or amount will not verify.", "network": "Network", "amount": "Amount", "address": "Address", "copy": "Copy", "wallet": "Send with wallet", "telegram": "Open Telegram", "copied": "Copied", "noWhop": "Whop links are not configured yet. Use USDT or open Telegram.", "noWallet": "No injected wallet. Copy the address or install MetaMask.", "connecting": "Connecting wallet…", "confirm": "Confirm the USDT transfer…", "sent": "Sent. Paste this hash in Telegram: ", "rejected": "Transaction cancelled."}, "plans": {"PREMIUM_MONTH": {"name": "Signal Room · Monthly"}, "PREMIUM_YEAR": {"name": "Signal Room · Yearly"}, "ELITE_MONTH": {"name": "Signal Circle · Monthly"}, "ELITE_YEAR": {"name": "Signal Circle · Yearly"}}};</script>
-  <script src="assets/js/config.js"></script>
-  <script src="assets/js/site.js"></script>
-  <script src="assets/js/pay.js"></script>
+  <script>window.CS_I18N = {"pay": {"title": "Checkout", "close": "Close", "sub": "{amount} USDT · {days} days access", "card": "Card · Whop", "cardHint": "Apple Pay, cards, Link", "cardSoon": "Add checkout links in config.js", "crypto": "USDT · Polygon transfer", "cryptoHint": "Exact amount, then activate in Telegram", "exact": "Send the exact amount. Wrong network or amount will not verify.", "network": "Network", "amount": "Amount", "address": "Address", "copy": "Copy", "wallet": "Send with wallet", "telegram": "Open Telegram", "copied": "Copied", "noWhop": "Card checkout for this plan is not available yet. Choose Crypto · Telegram bot instead.", "noWallet": "No injected wallet. Copy the address or install MetaMask.", "connecting": "Connecting wallet…", "confirm": "Confirm the USDT transfer…", "sent": "Sent. Paste this hash in Telegram: ", "rejected": "Transaction cancelled."}, "plans": {"PREMIUM_MONTH": {"name": "Signal Room · Monthly"}, "PREMIUM_YEAR": {"name": "Signal Room · Yearly"}, "ELITE_MONTH": {"name": "Signal Circle · Monthly"}, "ELITE_YEAR": {"name": "Signal Circle · Yearly"}}};</script>
+  <script src="assets/js/config.js?v=3"></script>
+  <script src="assets/js/site.js?v=3"></script>
+  <script src="assets/js/pay.js?v=3"></script>
 </body>
 </html>
