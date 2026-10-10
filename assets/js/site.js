@@ -29,24 +29,29 @@
   if (reduceMotion) {
     reveals.forEach((el) => el.classList.add("is-in"));
   } else {
-    document.querySelectorAll(".price-grid, .feature-grid, .engines, .pay-methods, .faq").forEach((grid) => {
-      [...grid.querySelectorAll(":scope > .reveal")].forEach((el, i) => {
-        el.style.setProperty("--d", i * 70 + "ms");
-      });
-    });
+    const reveal = (el, delay) => {
+      el.style.setProperty("--d", delay + "ms");
+      el.classList.add("is-in");
+      // clear the delay afterwards so hover transitions stay instant
+      setTimeout(() => el.style.setProperty("--d", "0ms"), delay + 600);
+    };
 
     const io = new IntersectionObserver(
       (entries) => {
+        // Only stagger items that appear in the same moment, and cap it,
+        // so fast scrolling never queues up long waits
+        let n = 0;
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
-          entry.target.classList.add("is-in");
+          reveal(entry.target, Math.min(n * 40, 120));
+          n++;
           io.unobserve(entry.target);
         });
       },
       {
-        threshold: 0.12,
-        // Start a touch before the element is fully on screen
-        rootMargin: "0px 0px -12% 0px",
+        threshold: 0,
+        // Trigger a bit BEFORE the element is on screen
+        rootMargin: "0px 0px 12% 0px",
       }
     );
 
