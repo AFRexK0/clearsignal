@@ -41,7 +41,7 @@ window.CS_CONFIG = {
     ELITE_YEAR: { tier: "elite", amount: 780, days: 365, billing: "year" },
   },
   whop: {
-    PREMIUM_MONTH: "",
+    PREMIUM_MONTH: "https://whop.com/clearsignal-dd13/products/crypto-signals-for-beginner-intermediate-traders/",
     PREMIUM_YEAR: "",
     ELITE_MONTH: "",
     ELITE_YEAR: "",
