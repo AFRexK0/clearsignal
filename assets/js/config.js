@@ -19,6 +19,7 @@ window.CS_CONFIG = {
   brand: "ClearSignal",
   telegramBot: "https://t.me/clearsignal_trading_bot",
   telegramBotStart: "https://t.me/clearsignal_trading_bot?start=subscribe",
+  telegramPaymentLink: "https://t.me/clearsignal_trading_bot?start=subscribe",
   freeChannel: "https://t.me/clearsignal_trading",
   support: "https://t.me/clearsignal_trading_bot",
   crypto: {
