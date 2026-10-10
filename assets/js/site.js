@@ -50,7 +50,13 @@
       }
     );
 
-    reveals.forEach((el) => io.observe(el));
+    // Everything in the hero (incl. the signal card) is visible on load,
+    // never waiting for a scroll to trigger it
+    const heroEls = reveals.filter((el) => el.closest(".hero"));
+    reveals.filter((el) => !heroEls.includes(el)).forEach((el) => io.observe(el));
+    requestAnimationFrame(() =>
+      requestAnimationFrame(() => heroEls.forEach((el) => el.classList.add("is-in")))
+    );
   }
 
   /* ——— FAQ open / close ——— */
