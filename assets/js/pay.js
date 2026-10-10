@@ -6,11 +6,9 @@
   const closeBtns = document.querySelectorAll("[data-close-modal]");
   const planButtons = document.querySelectorAll("[data-plan-tier]");
 
-  const getSelectedPlan = () => {
-    const selected = document.querySelector("[data-plan-tier][data-plan]");
-    if (selected && selected.dataset.plan) return selected.dataset.plan;
-    return "PREMIUM_MONTH";
-  };
+  let selectedPlan = "PREMIUM_MONTH";
+
+  const getSelectedPlan = () => selectedPlan;
 
   const showToast = (message) => {
     if (!toast) return;
@@ -39,11 +37,14 @@
     const cfg = window.CS_CONFIG || {};
     const plan = getSelectedPlan();
     const base = cfg.telegramPaymentLink || cfg.telegramBotStart || "https://t.me/clearsignal_trading_bot?start=subscribe";
-    const url = new URL(base, window.location.href);
-    url.searchParams.set("start", "subscribe");
-    if (plan) {
-      url.searchParams.set("plan", plan);
+    let url;
+    try {
+      url = new URL(base);
+    } catch {
+      url = new URL("https://t.me/clearsignal_trading_bot");
+      url.searchParams.set("start", "subscribe");
     }
+    url.searchParams.set("plan", plan);
     if (modal) {
       modal.hidden = true;
     }
@@ -72,12 +73,9 @@
   });
 
   planButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const selectedPlan = btn.dataset.plan || "PREMIUM_MONTH";
-      document.querySelectorAll("[data-plan-tier]").forEach((el) => {
-        el.dataset.plan = el.dataset.plan || el.dataset.planTier.toUpperCase() + "_MONTH";
-      });
-      btn.dataset.plan = selectedPlan;
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      selectedPlan = btn.dataset.plan || (btn.dataset.planTier.toUpperCase() + "_" + (window.CS_BILLING && window.CS_BILLING() || "MONTH"));
       refreshCheckoutLabel();
       if (modal) {
         modal.hidden = false;
@@ -86,11 +84,17 @@
   });
 
   if (whopBtn) {
-    whopBtn.addEventListener("click", openWhopCheckout);
+    whopBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      openWhopCheckout();
+    });
   }
 
   if (directTelegramBtn) {
-    directTelegramBtn.addEventListener("click", openTelegramPurchase);
+    directTelegramBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      openTelegramPurchase();
+    });
   }
 
   refreshCheckoutLabel();
