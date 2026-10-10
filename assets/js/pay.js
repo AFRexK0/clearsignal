@@ -3,7 +3,6 @@
   const toast = document.getElementById("toast");
   const directTelegramBtn = document.getElementById("pay-direct-telegram");
   const whopBtn = document.getElementById("pay-whop");
-  const cryptoBtn = document.getElementById("pay-crypto");
   const closeBtns = document.querySelectorAll("[data-close-modal]");
   const planButtons = document.querySelectorAll("[data-plan-tier]");
 
@@ -62,18 +61,8 @@
     }
 
     const message = (window.CS_I18N && window.CS_I18N.pay && window.CS_I18N.pay.noStripe)
-      || "Whop checkout link is not configured yet. Use USDT or open Telegram.";
+      || "Whop checkout link is not configured yet. Use Telegram.";
     showToast(message);
-  };
-
-  const handleCryptoChoice = () => {
-    const cryptoBox = document.getElementById("crypto-box");
-    if (cryptoBox) {
-      cryptoBox.hidden = false;
-    }
-    if (modal) {
-      modal.classList.add("is-crypto");
-    }
   };
 
   closeBtns.forEach((btn) => {
@@ -98,10 +87,6 @@
 
   if (whopBtn) {
     whopBtn.addEventListener("click", openWhopCheckout);
-  }
-
-  if (cryptoBtn) {
-    cryptoBtn.addEventListener("click", handleCryptoChoice);
   }
 
   if (directTelegramBtn) {
