@@ -384,26 +384,14 @@
         <button class="close" type="button" data-close-modal aria-label="{{pay.close}}">×</button>
       </header>
       <div class="pay-grid">
-        <button class="pay-opt" id="pay-stripe" type="button">
-          <div><strong>{{pay.card}}</strong><div class="muted">{{pay.cardHint}}</div></div>
+        <button class="pay-opt" id="pay-whop" type="button">
+          <div><strong>Card · Whop</strong><div class="muted">Apple Pay, cards, Link</div></div>
           <span>→</span>
         </button>
-        <button class="pay-opt" id="pay-crypto" type="button">
-          <div><strong>{{pay.crypto}}</strong><div class="muted">{{pay.cryptoHint}}</div></div>
+        <button class="pay-opt" id="pay-direct-telegram" type="button">
+          <div><strong>Telegram · Direct</strong><div class="muted">Pay via bot (card or crypto)</div></div>
           <span>→</span>
         </button>
-      </div>
-      <div class="crypto-box" id="crypto-box">
-        <p class="muted">{{pay.exact}}</p>
-        <div class="copy-row"><span class="muted">{{pay.network}}</span><code id="pay-network"></code></div>
-        <div class="copy-row"><span class="muted">{{pay.amount}}</span><code id="pay-amount"></code><button type="button" data-copy="#pay-amount">{{pay.copy}}</button></div>
-        <div class="copy-row"><span class="muted">{{pay.address}}</span><code id="pay-address"></code><button type="button" data-copy="#pay-address">{{pay.copy}}</button></div>
-        <div class="hero-actions" style="margin-top:14px">
-          <button class="btn btn-primary" id="pay-metamask" type="button">{{pay.wallet}}</button>
-          <button class="btn btn-ghost" id="pay-telegram" type="button">{{pay.telegram}}</button>
-        </div>
-        <p id="pay-hash" hidden class="copy-row"><code></code><a target="_blank" rel="noopener">explorer</a></p>
-        <p class="status" id="pay-status"></p>
       </div>
     </div>
   </div>
