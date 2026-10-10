@@ -1,36 +1,41 @@
 (function () {
+  const cfg = window.CS_CONFIG || {};
+  const i18n = (window.CS_I18N && window.CS_I18N.pay) || {};
+
   const modal = document.getElementById("checkout");
   const toast = document.getElementById("toast");
-  const directTelegramBtn = document.getElementById("pay-direct-telegram");
   const whopBtn = document.getElementById("pay-whop");
+  const cryptoBtn = document.getElementById("pay-crypto");
+  const telegramBtn = document.getElementById("pay-telegram");
+  const walletBtn = document.getElementById("pay-metamask");
+  const cryptoBox = document.getElementById("crypto-box");
+  const statusEl = document.getElementById("pay-status");
+  const hashRow = document.getElementById("pay-hash");
   const closeBtns = document.querySelectorAll("[data-close-modal]");
   const planButtons = document.querySelectorAll("[data-plan-tier]");
 
+  // The HTML uses premium/elite; config.js uses SIGNAL_ROOM / SIGNAL_CIRCLE.
+  const TIER_ALIAS = { PREMIUM: "SIGNAL_ROOM", ELITE: "SIGNAL_CIRCLE" };
+  const normalizePlan = (key) => {
+    const m = String(key || "").toUpperCase().match(/^(.*)_(MONTH|YEAR)$/);
+    if (!m) return "SIGNAL_ROOM_MONTH";
+    return `${TIER_ALIAS[m[1]] || m[1]}_${m[2]}`;
+  };
+
   let selectedPlan = "SIGNAL_ROOM_MONTH";
+  const getPlanMeta = () => (cfg.plans && cfg.plans[selectedPlan]) || null;
 
-  const getSelectedPlan = () => selectedPlan;
-
+  /* ——— helpers ——— */
   const showToast = (message) => {
     if (!toast) return;
     toast.textContent = message;
     toast.classList.add("is-visible");
     window.clearTimeout(showToast.timer);
-    showToast.timer = window.setTimeout(() => {
-      toast.classList.remove("is-visible");
-    }, 2500);
+    showToast.timer = window.setTimeout(() => toast.classList.remove("is-visible"), 2500);
   };
 
-  const refreshCheckoutLabel = () => {
-    const sub = document.getElementById("checkout-sub");
-    const plan = getSelectedPlan();
-    const config = window.CS_CONFIG || {};
-    const planMeta = config.plans && config.plans[plan];
-    if (!sub) return;
-    if (planMeta) {
-      sub.textContent = `${planMeta.tierLabel || planMeta.tier} · ${planMeta.amount} USDT · ${planMeta.days} days access`;
-      return;
-    }
-    sub.textContent = "Choose a payment method";
+  const setStatus = (message) => {
+    if (statusEl) statusEl.textContent = message || "";
   };
 
   const openUrl = (url) => {
@@ -39,62 +44,212 @@
     return true;
   };
 
-  const openTelegramPurchase = () => {
-    const cfg = window.CS_CONFIG || {};
-    const plan = getSelectedPlan();
-    const base = cfg.telegramPaymentLink || cfg.telegramBotStart || "https://t.me/clearsignal_trading_bot?start=subscribe";
-    const url = new URL(base, window.location.href);
-    url.searchParams.set("start", "subscribe");
-    url.searchParams.set("plan", plan);
-
-    if (modal) modal.hidden = true;
-    openUrl(url.toString());
+  const showCryptoBox = (show) => {
+    if (!cryptoBox) return;
+    cryptoBox.hidden = !show;
+    cryptoBox.classList.toggle("is-open", show);
+    cryptoBox.style.display = show ? "block" : "none";
   };
 
-  const openWhopCheckout = () => {
-    const cfg = window.CS_CONFIG || {};
-    const plan = getSelectedPlan();
-    const link = cfg.whop && cfg.whop[plan];
+  const openModal = () => {
+    if (!modal) return;
+    modal.hidden = false;
+    modal.style.display = "";
+  };
+  const closeModal = () => {
+    if (modal) modal.hidden = true;
+  };
 
+  const refreshCheckoutLabel = () => {
+    const sub = document.getElementById("checkout-sub");
+    const meta = getPlanMeta();
+    if (!sub) return;
+    sub.textContent = meta
+      ? `${meta.tierLabel || meta.tier} · ${meta.billing === "year" ? "Yearly" : "Monthly"} · ${meta.amount} USDT · ${meta.days} days access`
+      : "Choose a payment method";
+  };
+
+  const fillCryptoDetails = () => {
+    const meta = getPlanMeta();
+    const c = cfg.crypto || {};
+    const set = (id, text) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = text;
+    };
+    set("pay-network", `USDT · ${c.chainName || "Polygon"} (chain ${c.chainId || 137})`);
+    set("pay-amount", meta ? String(meta.amount) : "");
+    set("pay-address", c.wallet || "");
+  };
+
+  /* ——— Whop ——— */
+  const openWhopCheckout = () => {
+    const link = cfg.whop && cfg.whop[selectedPlan];
     if (link) {
-      if (modal) modal.hidden = true;
+      closeModal();
       openUrl(link);
       return;
     }
-
-    const message = (window.CS_I18N && window.CS_I18N.pay && window.CS_I18N.pay.noStripe)
-      || "Whop checkout link is not configured yet. Use Telegram.";
-    showToast(message);
+    showToast(i18n.noWhop || "Whop link for this plan is not configured yet. Use USDT or Telegram.");
   };
 
-  closeBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      if (modal) modal.hidden = true;
+  /* ——— Telegram ——— */
+  const openTelegramPurchase = () => {
+    const base =
+      cfg.telegramPaymentLink || cfg.telegramBotStart || "https://t.me/clearsignal_trading_bot?start=subscribe";
+    const url = new URL(base, window.location.href);
+    url.searchParams.set("start", "subscribe");
+    url.searchParams.set("plan", selectedPlan);
+    closeModal();
+    openUrl(url.toString());
+  };
+
+  /* ——— Copy buttons ——— */
+  const copyText = async (text) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch (e) {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      let ok = false;
+      try { ok = document.execCommand("copy"); } catch (_) {}
+      ta.remove();
+      return ok;
+    }
+  };
+
+  document.querySelectorAll("[data-copy]").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      const target = document.querySelector(btn.dataset.copy);
+      if (!target) return;
+      const ok = await copyText(target.textContent.trim());
+      showToast(ok ? i18n.copied || "Copied" : "Copy failed");
     });
+  });
+
+  /* ——— Wallet (MetaMask etc.) USDT transfer ——— */
+  const encodeTransfer = (to, amountUnits) => {
+    const addr = to.toLowerCase().replace(/^0x/, "").padStart(64, "0");
+    const amt = amountUnits.toString(16).padStart(64, "0");
+    return "0xa9059cbb" + addr + amt;
+  };
+
+  const ensurePolygon = async (eth) => {
+    const c = cfg.crypto;
+    try {
+      await eth.request({ method: "wallet_switchEthereumChain", params: [{ chainId: c.chainIdHex }] });
+    } catch (err) {
+      if (err && (err.code === 4902 || err.code === -32603)) {
+        await eth.request({
+          method: "wallet_addEthereumChain",
+          params: [{
+            chainId: c.chainIdHex,
+            chainName: c.chainName,
+            nativeCurrency: { name: c.nativeSymbol, symbol: c.nativeSymbol, decimals: 18 },
+            rpcUrls: c.rpcUrls,
+            blockExplorerUrls: [c.explorer],
+          }],
+        });
+      } else {
+        throw err;
+      }
+    }
+  };
+
+  const sendWithWallet = async () => {
+    const eth = window.ethereum;
+    const meta = getPlanMeta();
+    const c = cfg.crypto || {};
+    if (!eth) {
+      setStatus(i18n.noWallet || "No injected wallet. Copy the address or install MetaMask.");
+      showToast(i18n.noWallet || "No wallet found");
+      return;
+    }
+    if (!meta) return;
+
+    try {
+      setStatus(i18n.connecting || "Connecting wallet…");
+      const accounts = await eth.request({ method: "eth_requestAccounts" });
+      await ensurePolygon(eth);
+
+      setStatus(i18n.confirm || "Confirm the USDT transfer…");
+      const units = BigInt(meta.amount) * 10n ** BigInt(c.usdtDecimals || 6);
+      const txHash = await eth.request({
+        method: "eth_sendTransaction",
+        params: [{
+          from: accounts[0],
+          to: c.usdt,
+          data: encodeTransfer(c.wallet, units),
+          value: "0x0",
+        }],
+      });
+
+      setStatus((i18n.sent || "Sent. Paste this hash in Telegram: ") + txHash);
+      if (hashRow) {
+        hashRow.hidden = false;
+        const code = hashRow.querySelector("code");
+        const link = hashRow.querySelector("a");
+        if (code) code.textContent = txHash;
+        if (link) link.href = `${c.explorer}/tx/${txHash}`;
+      }
+    } catch (err) {
+      if (err && err.code === 4001) {
+        setStatus(i18n.rejected || "Transaction cancelled.");
+      } else {
+        setStatus((err && err.message) || "Wallet error.");
+      }
+    }
+  };
+
+  /* ——— Wire up ——— */
+  closeBtns.forEach((btn) => btn.addEventListener("click", closeModal));
+
+  if (modal) {
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) closeModal();
+    });
+  }
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeModal();
   });
 
   planButtons.forEach((btn) => {
     btn.addEventListener("click", (event) => {
       event.preventDefault();
-      selectedPlan = btn.dataset.plan || btn.dataset.planTier.toUpperCase() + "_MONTH";
+      selectedPlan = normalizePlan(btn.dataset.plan || `${btn.dataset.planTier}_MONTH`);
       refreshCheckoutLabel();
-      if (modal) modal.hidden = false;
+      showCryptoBox(false);
+      setStatus("");
+      if (hashRow) hashRow.hidden = true;
+      openModal();
     });
   });
 
-  if (whopBtn) {
-    whopBtn.addEventListener("click", (event) => {
-      event.preventDefault();
-      openWhopCheckout();
-    });
-  }
+  whopBtn?.addEventListener("click", (e) => {
+    e.preventDefault();
+    openWhopCheckout();
+  });
 
-  if (directTelegramBtn) {
-    directTelegramBtn.addEventListener("click", (event) => {
-      event.preventDefault();
-      openTelegramPurchase();
-    });
-  }
+  cryptoBtn?.addEventListener("click", (e) => {
+    e.preventDefault();
+    fillCryptoDetails();
+    showCryptoBox(true);
+  });
 
+  telegramBtn?.addEventListener("click", (e) => {
+    e.preventDefault();
+    openTelegramPurchase();
+  });
+
+  walletBtn?.addEventListener("click", (e) => {
+    e.preventDefault();
+    sendWithWallet();
+  });
+
+  showCryptoBox(false);
   refreshCheckoutLabel();
 })();
