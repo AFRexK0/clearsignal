@@ -7,7 +7,7 @@
   const menuBtn = document.querySelector(".menu-btn");
   const billing = document.querySelector(".billing");
   const billingBtns = [...document.querySelectorAll("[data-billing]")];
-  const priceAmounts = [...document.querySelectorAll("[data-price-week]")];
+  const priceAmounts = [...document.querySelectorAll("[data-price-month][data-price-year]")];
   const planBtns = document.querySelectorAll("[data-plan-tier]");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -86,9 +86,13 @@
     });
   });
 
-  /* ——— Billing toggle: sliding pill + price face swap ——— */
-  let billingMode = "month";
+  /* ——— Billing toggle: sliding pill + price face swap ———
+     Modes: "month" | "year".
+     Prices are NOT calculated: each card carries its own
+     data-price-month and data-price-year values. */
+  let billingMode = "year";
   let swapping = false;
+  let pending = false;
 
   const ensurePill = () => {
     if (!billing || billing.querySelector(".billing-pill")) return;
@@ -109,20 +113,23 @@
   };
 
   const formatPrice = (el) =>
-    billingMode === "week"
-      ? `$${el.dataset.priceWeek}<small> /wk</small>`
+    billingMode === "year"
+      ? `$${el.dataset.priceYear}<small> /yr</small>`
       : `$${el.dataset.priceMonth}<small> /mo</small>`;
 
   const swapAmount = (el) =>
     new Promise((resolve) => {
       const next = formatPrice(el);
       if (reduceMotion) {
-        el.innerHTML = next;
+        el.innerHTML = `<span class="amount-face">${next}</span>`;
         resolve();
         return;
       }
 
-      let face = el.querySelector(".amount-face");
+      // Clean up any leftover faces, keep only one current face
+      const faces = el.querySelectorAll(".amount-face");
+      let face = faces[faces.length - 1];
+      faces.forEach((f) => { if (f !== face) f.remove(); });
       if (!face) {
         face = document.createElement("span");
         face.className = "amount-face";
@@ -141,7 +148,10 @@
       face.classList.add("amount-face--out");
       incoming.classList.add("amount-face--show");
 
+      let finished = false;
       const finish = () => {
+        if (finished) return;
+        finished = true;
         face.remove();
         incoming.classList.remove("amount-face--in", "amount-face--show");
         resolve();
@@ -157,12 +167,12 @@
     planBtns.forEach((btn) => {
       const tier = btn.dataset.planTier;
       if (!tier || tier === "free") return;
-      btn.dataset.plan = `${tier.toUpperCase()}_${billingMode === "week" ? "WEEK" : "MONTH"}`;
+      btn.dataset.plan = `${tier.toUpperCase()}_${billingMode === "year" ? "YEAR" : "MONTH"}`;
     });
 
     document.querySelectorAll("[data-save]").forEach((el) => {
-      el.hidden = billingMode !== "month";
-      el.classList.toggle("is-shown", billingMode === "month");
+      el.hidden = billingMode !== "year";
+      el.classList.toggle("is-shown", billingMode === "year");
     });
 
     if (!animateAmounts) {
@@ -172,10 +182,18 @@
       return;
     }
 
-    if (swapping) return;
+    // If the user clicks again mid-animation, re-run once it finishes
+    if (swapping) {
+      pending = true;
+      return;
+    }
     swapping = true;
     await Promise.all(priceAmounts.map(swapAmount));
     swapping = false;
+    if (pending) {
+      pending = false;
+      applyBilling(true);
+    }
   };
 
   ensurePill();
