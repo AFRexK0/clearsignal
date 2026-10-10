@@ -32,7 +32,7 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/site.css">
   <script>document.documentElement.classList.add("js");</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"ClearSignal","url":"https://afrexk0.github.io/telegram-crypto-bot/","logo":"https://afrexk0.github.io/telegram-crypto-bot/assets/img/favicon.svg","sameAs":["https://t.me/clearsignal_trading_bot","https://t.me/clearsignal_trading"]},{"@type":"WebSite","name":"ClearSignal","url":"https://afrexk0.github.io/telegram-crypto-bot/","inLanguage":"en","description":"ClearSignal delivers verified crypto signals to Telegram. Dual engines (AI + rules), 5m to 4h, suggested leverage, hold-until-opposite. Pay with Whoop or USDT on Polygon. No auto-trading."},{"@type":"SoftwareApplication","name":"ClearSignal","applicationCategory":"FinanceApplication","operatingSystem":"Telegram","offers":[{"@type":"Offer","name":"Signal Room Yearly","price":"390","priceCurrency":"USD"},{"@type":"Offer","name":"Signal Circle Yearly","price":"780","priceCurrency":"USD"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is this financial advice?","acceptedAnswer":{"@type":"Answer","text":"No. Signals are educational market commentary. You are responsible for fills, risk, and losses. Past results do not predict the future."}},{"@type":"Question","name":"Does the bot trade my exchange?","acceptedAnswer":{"@type":"Answer","text":"No. There is no exchange API, no copy-trading hook, and no withdrawal permission. You place orders yourself."}},{"@type":"Question","name":"Why can 4h stay quiet for days?","acceptedAnswer":{"@type":"Answer","text":"Hold-until-opposite only posts on a direction change. A 4h trend can run many candles without a flip. 15m and 1h print more often when those rules are enabled."}},{"@type":"Question","name":"How do Whoop payments activate access?","acceptedAnswer":{"@type":"Answer","text":"Whoop Payment Links are hosted by Whoop. After success you land on a thank-you page and open Telegram. Paste or message the plan you paid so the operator / bot can issue the invite. Links are configured in website/assets/js/config.js — until they are set, use USDT."}},{"@type":"Question","name":"Which network for crypto?","acceptedAnswer":{"@type":"Answer","text":"USDT on Polygon (chain id 137), contract 0xc213…e8f, six decimals. Other chains will not verify. Gas is paid in POL."}},{"@type":"Question","name":"Can I cancel?","acceptedAnswer":{"@type":"Answer","text":"There is no subscription auto-charge. Access lasts 7 or 30 days from a successful activation, then you simply do not renew."}},{"@type":"Question","name":"What is the difference vs random Telegram calls?","acceptedAnswer":{"@type":"Answer","text":"Indicator rules must pass a held-out profitability gate after modeled fees. Live state is per symbol+timeframe. First start does not replay history into the channel."}},{"@type":"Question","name":"Do you store my seed phrase?","acceptedAnswer":{"@type":"Answer","text":"Never. Wallet connect only requests a USDT transfer. The site never asks for a seed, private key, or exchange password."}}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"ClearSignal","url":"https://afrexk0.github.io/telegram-crypto-bot/","logo":"https://afrexk0.github.io/telegram-crypto-bot/assets/img/favicon.svg","sameAs":["https://t.me/clearsignal_trading_bot","https://t.me/clearsignal_trading"]},{"@type":"WebSite","name":"ClearSignal","url":"https://afrexk0.github.io/telegram-crypto-bot/","inLanguage":"en","description":"ClearSignal delivers verified crypto signals to Telegram. Dual engines (AI + rules), 5m to 4h, suggested leverage, hold-until-opposite. Pay with Whoop or USDT on Polygon. No auto-trading."},{"@type":"SoftwareApplication","name":"ClearSignal","applicationCategory":"FinanceApplication","operatingSystem":"Telegram","offers":[{"@type":"Offer","name":"Signal Room Monthly","price":"39","priceCurrency":"USD"},{"@type":"Offer","name":"Signal Room Yearly","price":"390","priceCurrency":"USD"},{"@type":"Offer","name":"Signal Circle Monthly","price":"60","priceCurrency":"USD"},{"@type":"Offer","name":"Signal Circle Yearly","price":"780","priceCurrency":"USD"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is this financial advice?","acceptedAnswer":{"@type":"Answer","text":"No. Signals are educational market commentary. You are responsible for fills, risk, and losses. Past results do not predict the future."}},{"@type":"Question","name":"Does the bot trade my exchange?","acceptedAnswer":{"@type":"Answer","text":"No. There is no exchange API, no copy-trading hook, and no withdrawal permission. You place orders yourself."}},{"@type":"Question","name":"Why can 4h stay quiet for days?","acceptedAnswer":{"@type":"Answer","text":"Hold-until-opposite only posts on a direction change. A 4h trend can run many candles without a flip. 15m and 1h print more often when those rules are enabled."}},{"@type":"Question","name":"How do Whoop payments activate access?","acceptedAnswer":{"@type":"Answer","text":"Whoop Payment Links are hosted by Whoop. After success you land on a thank-you page and open Telegram. Paste or message the plan you paid so the operator / bot can issue the invite. Links are configured in website/assets/js/config.js — until they are set, use USDT."}},{"@type":"Question","name":"Which network for crypto?","acceptedAnswer":{"@type":"Answer","text":"USDT on Polygon (chain id 137), contract 0xc213…e8f, six decimals. Other chains will not verify. Gas is paid in POL."}},{"@type":"Question","name":"Can I cancel?","acceptedAnswer":{"@type":"Answer","text":"There is no subscription auto-charge. Access lasts 30 days (Monthly) or 365 days (Yearly) from a successful activation, then you simply do not renew."}},{"@type":"Question","name":"What is the difference vs random Telegram calls?","acceptedAnswer":{"@type":"Answer","text":"Indicator rules must pass a held-out profitability gate after modeled fees. Live state is per symbol+timeframe. First start does not replay history into the channel."}},{"@type":"Question","name":"Do you store my seed phrase?","acceptedAnswer":{"@type":"Answer","text":"Never. Wallet connect only requests a USDT transfer. The site never asks for a seed, private key, or exchange password."}}]}]}</script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -151,7 +151,7 @@
           <article class="card reveal"><div class="icon">⌘</div><h3>Close + PnL</h3><p>On a flip, channels get a CLOSE NOW post: prior entry, exit, suggested leverage, WIN/LOSS at that leverage, and the spot move.</p></article>
           <article class="card reveal"><div class="icon">✓</div><h3>Out-of-sample gate</h3><p>Indicator params are chosen on train/inner-val only. Live enablement requires a passing held-out gate (expectancy, PF, drawdown, walk-forward folds).</p></article>
           <article class="card reveal"><div class="icon">⬡</div><h3>Fee-aware logic</h3><p>Round-trip cost of 0.26% is in the backtest. Momentum needs move vs volatility plus a fee floor so 5m noise does not become a signal.</p></article>
-          <article class="card reveal"><div class="icon">◻</div><h3>No auto-renewal</h3><p>Each plan is a one-time window (7 or 30 days). Access ends on expiry. Renew when you want — no hidden card on file from us.</p></article>
+          <article class="card reveal"><div class="icon">◻</div><h3>No auto-renewal</h3><p>Each plan is a one-time window (30 or 365 days). Access ends on expiry. Renew when you want — no hidden card on file from us.</p></article>
           <article class="card reveal"><div class="icon">₿</div><h3>Whoop or USDT</h3><p>Card checkout via Whoop Payment Links, or an on-chain USDT transfer on Polygon (MetaMask / copy address). Activate in Telegram with the tx hash.</p></article>
           <article class="card reveal"><div class="icon">✉</div><h3>Telegram-native</h3><p>The product lives where traders already are. This website is the storefront; delivery, invites, and support stay in Telegram.</p></article>
         </div>
@@ -223,11 +223,11 @@
         <div class="pricing-intro reveal">
           <p class="kicker">Pricing</p>
           <h2>Plans that match what each channel receives.</h2>
-          <p class="lede">One time windows. No auto renew. Signal Circle includes Signal Room. Feature access is listed on each card.</p>
+          <p class="lede">One-time windows. No auto-renew. Signal Circle includes Signal Room. Feature access is listed on each card.</p>
         </div>
         <div class="billing reveal" role="tablist" aria-label="Billing period">
-          <button type="button" data-billing="week">Monthly</button>
-          <button type="button" data-billing="month" class="is-on">Yearly</button>
+          <button type="button" data-billing="month">Monthly</button>
+          <button type="button" data-billing="year" class="is-on">Yearly</button>
         </div>
         <p class="muted pricing-save" data-save>Yearly is the better rate.</p>
         <div class="price-grid">
@@ -240,33 +240,33 @@
               <li data-state="yes"><span>Public / free signals</span><em>Yes</em></li>
               <li data-state="lim"><span>Full Signal Room book (alts + majors)</span><em>Limited</em></li>
               <li data-state="no"><span>Early routing vs Free teasers</span><em>No</em></li>
-              <li data-state="no"><span>Signal Circle only pairs and density</span><em>No</em></li>
+              <li data-state="no"><span>Signal Circle-only pairs and density</span><em>No</em></li>
               <li data-state="no"><span>Priority support path</span><em>No</em></li>
-              <li data-state="no"><span>Highest tier analyst extras (as offered in-product)</span><em>No</em></li>
-              <li data-state="yes"><span>No auto trading of your exchange</span><em>Yes</em></li>
+              <li data-state="no"><span>Highest-tier analyst extras (as offered in-product)</span><em>No</em></li>
+              <li data-state="yes"><span>No auto-trading of your exchange</span><em>Yes</em></li>
             </ul>
             <a class="btn btn-ghost btn-wide" href="https://t.me/clearsignal_trading">Join Free</a>
           </article>
           <article class="card price reveal">
-            <span class="pill pill-dim">The Signal Circle</span>
-            <h3>The Signal Circle</h3>
-            <div class="amount" data-price-week="12" data-price-month="39">$39<small> /mo</small></div>
+            <span class="pill pill-dim">The Signal Room</span>
+            <h3>The Signal Room</h3>
+            <div class="amount" data-price-month="39" data-price-year="390">$390<small> /yr</small></div>
             <p class="muted">Get right into it.</p>
             <ul class="matrix">
               <li data-state="yes"><span>Public / free signals</span><em>Yes</em></li>
               <li data-state="yes"><span>Full Signal Room book (alts + majors)</span><em>Yes</em></li>
               <li data-state="yes"><span>Early routing vs Free teasers</span><em>Yes</em></li>
-              <li data-state="no"><span>Signal Circle only pairs and density</span><em>No</em></li>
+              <li data-state="no"><span>Signal Circle-only pairs and density</span><em>No</em></li>
               <li data-state="yes"><span>Priority support path</span><em>Yes</em></li>
-              <li data-state="no"><span>Highest tier analyst extras (as offered in-product)</span><em>No</em></li>
-              <li data-state="yes"><span>No auto trading of your exchange</span><em>Yes</em></li>
+              <li data-state="no"><span>Highest-tier analyst extras (as offered in-product)</span><em>No</em></li>
+              <li data-state="yes"><span>No auto-trading of your exchange</span><em>Yes</em></li>
             </ul>
-            <button class="btn btn-ghost btn-wide" type="button" data-plan-tier="premium" data-plan="PREMIUM_MONTH">Continue · Signal Room</button>
+            <button class="btn btn-ghost btn-wide" type="button" data-plan-tier="premium" data-plan="PREMIUM_YEAR">Continue · Signal Room</button>
           </article>
           <article class="card price featured reveal">
-            <span class="pill pill-Signal Circle">The Signal Room</span>
-            <h3>The Signal Room</h3>
-            <div class="amount" data-price-week="20" data-price-month="60">$60<small> /mo</small></div>
+            <span class="pill pill-vip">The Signal Circle</span>
+            <h3>The Signal Circle</h3>
+            <div class="amount" data-price-month="60" data-price-year="780">$780<small> /yr</small></div>
             <p class="muted">Our best yet.</p>
             <ul class="matrix">
               <li data-state="yes"><span>Public / free signals</span><em>Yes</em></li>
@@ -277,7 +277,7 @@
               <li data-state="yes"><span>Highest-tier analyst extras (as offered in-product)</span><em>Yes</em></li>
               <li data-state="yes"><span>No auto-trading of your exchange</span><em>Yes</em></li>
             </ul>
-            <button class="btn btn-primary btn-wide" type="button" data-plan-tier="Signal Circle" data-plan="Signal Circle_MONTH">Continue · Signal Circle</button>
+            <button class="btn btn-primary btn-wide" type="button" data-plan-tier="vip" data-plan="VIP_YEAR">Continue · Signal Circle</button>
           </article>
         </div>
       </div>
@@ -295,9 +295,9 @@
             <h3>Whoop</h3>
             <p class="muted">Apple Pay, cards, and Link on Whoop-hosted Payment Links. After payment, return here and open Telegram so access can be granted for the matching plan.</p>
             <ol class="steps">
-              <li>Pick your tier, Yearly or yearly</li>
+              <li>Pick your tier, Monthly or Yearly.</li>
               <li>Pay on Whoop’s page (no card data touches this website).</li>
-              <li>you will be automatically added to the group via Whoop</li>
+              <li>You will be automatically added to the group via Whoop.</li>
             </ol>
           </article>
           <article class="card reveal">
@@ -341,7 +341,7 @@
         </details>
         <details class="reveal">
           <summary>Can I cancel?</summary>
-          <div class="faq-body"><div class="faq-body-inner"><p>There is no subscription auto-charge. Access lasts 7 or 30 days from a successful activation, then you simply do not renew.</p></div></div>
+          <div class="faq-body"><div class="faq-body-inner"><p>There is no subscription auto-charge. Access lasts 30 days (Monthly) or 365 days (Yearly) from a successful activation, then you simply do not renew.</p></div></div>
         </details>
         <details class="reveal">
           <summary>What is the difference vs random Telegram calls?</summary>
@@ -409,7 +409,7 @@
   </div>
   <div id="toast" class="toast" role="status"></div>
 
-  <script>window.CS_I18N = {"pay": {"title": "Checkout", "close": "Close", "sub": "{amount} USDT · {days} days access", "card": "Card · Whoop", "cardHint": "Apple Pay, cards, Link", "cardSoon": "Add Payment Links in config.js", "crypto": "USDT · Polygon transfer", "cryptoHint": "Exact amount, then activate in Telegram", "exact": "Send the exact amount. Wrong network or amount will not verify.", "network": "Network", "amount": "Amount", "address": "Address", "copy": "Copy", "wallet": "Send with wallet", "telegram": "Open Telegram", "copied": "Copied", "noWhoop": "Whoop links are not configured yet. Use USDT or open Telegram.", "noWallet": "No injected wallet. Copy the address or install MetaMask.", "connecting": "Connecting wallet…", "confirm": "Confirm the USDT transfer…", "sent": "Sent. Paste this hash in Telegram: ", "rejected": "Transaction cancelled."}, "plans": {"PREMIUM_WEEK": {"name": "Signal Room · Monthly"}, "PREMIUM_MONTH": {"name": "Signal Room · Yearly"}, "Signal Circle_WEEK": {"name": "Signal Circle · Monthly"}, "Signal Circle_MONTH": {"name": "Signal Circle · Yearly"}}};</script>
+  <script>window.CS_I18N = {"pay": {"title": "Checkout", "close": "Close", "sub": "{amount} USDT · {days} days access", "card": "Card · Whoop", "cardHint": "Apple Pay, cards, Link", "cardSoon": "Add Payment Links in config.js", "crypto": "USDT · Polygon transfer", "cryptoHint": "Exact amount, then activate in Telegram", "exact": "Send the exact amount. Wrong network or amount will not verify.", "network": "Network", "amount": "Amount", "address": "Address", "copy": "Copy", "wallet": "Send with wallet", "telegram": "Open Telegram", "copied": "Copied", "noWhoop": "Whoop links are not configured yet. Use USDT or open Telegram.", "noWallet": "No injected wallet. Copy the address or install MetaMask.", "connecting": "Connecting wallet…", "confirm": "Confirm the USDT transfer…", "sent": "Sent. Paste this hash in Telegram: ", "rejected": "Transaction cancelled."}, "plans": {"PREMIUM_MONTH": {"name": "Signal Room · Monthly"}, "PREMIUM_YEAR": {"name": "Signal Room · Yearly"}, "VIP_MONTH": {"name": "Signal Circle · Monthly"}, "VIP_YEAR": {"name": "Signal Circle · Yearly"}}};</script>
   <script src="assets/js/config.js"></script>
   <script src="assets/js/site.js"></script>
   <script src="assets/js/pay.js"></script>
