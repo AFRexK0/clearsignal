@@ -27,11 +27,22 @@
 
   /* ——— helpers ——— */
   const showToast = (message) => {
-    if (!toast) return;
+    if (!toast) { window.alert(message); return; }
     toast.textContent = message;
     toast.classList.add("is-visible");
+    // Inline styles so the toast shows above the modal even if the CSS doesn't
+    Object.assign(toast.style, {
+      position: "fixed", left: "50%", bottom: "28px", transform: "translateX(-50%)",
+      zIndex: "2147483647", opacity: "1", visibility: "visible", display: "block",
+      background: "#111", color: "#fff", padding: "12px 18px", borderRadius: "10px",
+      border: "1px solid rgba(255,255,255,.25)", pointerEvents: "none", maxWidth: "90vw",
+    });
     window.clearTimeout(showToast.timer);
-    showToast.timer = window.setTimeout(() => toast.classList.remove("is-visible"), 2500);
+    showToast.timer = window.setTimeout(() => {
+      toast.classList.remove("is-visible");
+      toast.style.opacity = "0";
+      toast.style.visibility = "hidden";
+    }, 3500);
   };
 
   const setStatus = (message) => {
@@ -49,6 +60,12 @@
     cryptoBox.hidden = !show;
     cryptoBox.classList.toggle("is-open", show);
     cryptoBox.style.display = show ? "block" : "none";
+  };
+
+  const showHashRow = (show) => {
+    if (!hashRow) return;
+    hashRow.hidden = !show;
+    hashRow.style.display = show ? "flex" : "none";
   };
 
   const openModal = () => {
@@ -122,15 +139,6 @@
     }
   };
 
-  document.querySelectorAll("[data-copy]").forEach((btn) => {
-    btn.addEventListener("click", async () => {
-      const target = document.querySelector(btn.dataset.copy);
-      if (!target) return;
-      const ok = await copyText(target.textContent.trim());
-      showToast(ok ? i18n.copied || "Copied" : "Copy failed");
-    });
-  });
-
   /* ——— Wallet (MetaMask etc.) USDT transfer ——— */
   const encodeTransfer = (to, amountUnits) => {
     const addr = to.toLowerCase().replace(/^0x/, "").padStart(64, "0");
@@ -190,7 +198,7 @@
 
       setStatus((i18n.sent || "Sent. Paste this hash in Telegram: ") + txHash);
       if (hashRow) {
-        hashRow.hidden = false;
+        showHashRow(true);
         const code = hashRow.querySelector("code");
         const link = hashRow.querySelector("a");
         if (code) code.textContent = txHash;
@@ -205,51 +213,46 @@
     }
   };
 
-  /* ——— Wire up ——— */
-  closeBtns.forEach((btn) => btn.addEventListener("click", closeModal));
+  /* ——— Wire up (one delegated, capture-phase listener) ——— */
+  document.addEventListener("click", (event) => {
+    const t = event.target;
+    if (!(t instanceof Element)) return;
 
-  if (modal) {
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) closeModal();
-    });
-  }
+    const planBtn = t.closest("[data-plan-tier]");
+    if (planBtn) {
+      event.preventDefault();
+      selectedPlan = normalizePlan(planBtn.dataset.plan || `${planBtn.dataset.planTier}_MONTH`);
+      console.log("[pay.js] plan selected:", selectedPlan);
+      refreshCheckoutLabel();
+      showCryptoBox(false);
+      setStatus("");
+      showHashRow(false);
+      openModal();
+      return;
+    }
+
+    if (t.closest("[data-close-modal]")) { closeModal(); return; }
+    if (t === modal) { closeModal(); return; }
+
+    if (t.closest("#pay-whop")) { event.preventDefault(); console.log("[pay.js] whop"); openWhopCheckout(); return; }
+    if (t.closest("#pay-crypto")) { event.preventDefault(); console.log("[pay.js] crypto"); fillCryptoDetails(); showCryptoBox(true); return; }
+    if (t.closest("#pay-telegram")) { event.preventDefault(); console.log("[pay.js] telegram"); openTelegramPurchase(); return; }
+    if (t.closest("#pay-metamask")) { event.preventDefault(); console.log("[pay.js] wallet"); sendWithWallet(); return; }
+
+    const copyBtn = t.closest("[data-copy]");
+    if (copyBtn) {
+      event.preventDefault();
+      const target = document.querySelector(copyBtn.dataset.copy);
+      if (target) copyText(target.textContent.trim()).then((ok) => showToast(ok ? (i18n.copied || "Copied") : "Copy failed"));
+    }
+  }, true);
+
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") closeModal();
   });
 
-  planButtons.forEach((btn) => {
-    btn.addEventListener("click", (event) => {
-      event.preventDefault();
-      selectedPlan = normalizePlan(btn.dataset.plan || `${btn.dataset.planTier}_MONTH`);
-      refreshCheckoutLabel();
-      showCryptoBox(false);
-      setStatus("");
-      if (hashRow) hashRow.hidden = true;
-      openModal();
-    });
-  });
-
-  whopBtn?.addEventListener("click", (e) => {
-    e.preventDefault();
-    openWhopCheckout();
-  });
-
-  cryptoBtn?.addEventListener("click", (e) => {
-    e.preventDefault();
-    fillCryptoDetails();
-    showCryptoBox(true);
-  });
-
-  telegramBtn?.addEventListener("click", (e) => {
-    e.preventDefault();
-    openTelegramPurchase();
-  });
-
-  walletBtn?.addEventListener("click", (e) => {
-    e.preventDefault();
-    sendWithWallet();
-  });
-
+  console.log("[pay.js] v2 loaded");
   showCryptoBox(false);
+  showHashRow(false);
   refreshCheckoutLabel();
 })();
