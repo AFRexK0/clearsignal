@@ -1,13 +1,18 @@
 /**
  * Public site config — no secrets here.
  *
- * Stripe: create Payment Links in the Stripe Dashboard (one per plan),
- * then paste the URLs below. Success URL should be:
+ * Whop: create one checkout link per plan in your Whop dashboard
+ * (Monthly + Yearly for each tier), then paste the URLs into `whop` below.
+ * Set each plan's post-purchase redirect to:
  *   {SITE_URL}success.html?plan=PREMIUM_MONTH
- * (or PREMIUM_WEEK / ELITE_WEEK / ELITE_MONTH)
+ * (or PREMIUM_YEAR / ELITE_MONTH / ELITE_YEAR)
  *
  * Crypto: USDT on Polygon is verified by the existing Telegram bot.
  * After the on-chain transfer, the user pastes the tx hash in Telegram.
+ *
+ * `amount` is the USDT price and must match the price shown on the site
+ * (data-price-month / data-price-year in index.html). Yearly prices are set
+ * by hand, not calculated from the monthly price.
  */
 window.CS_CONFIG = {
   siteUrl: "https://afrexk0.github.io/telegram-crypto-bot/",
@@ -29,15 +34,15 @@ window.CS_CONFIG = {
     wallet: "0xcD48fcB4F444727010BAA0199652933702917291",
   },
   plans: {
-    PREMIUM_WEEK: { tier: "premium", amount: 12, days: 7, billing: "week" },
-    PREMIUM_MONTH: { tier: "premium", amount: 35, days: 30, billing: "month" },
-    ELITE_WEEK: { tier: "elite", amount: 20, days: 7, billing: "week" },
-    ELITE_MONTH: { tier: "elite", amount: 60, days: 30, billing: "month" },
+    PREMIUM_MONTH: { tier: "premium", amount: 39, days: 30, billing: "month" },
+    PREMIUM_YEAR: { tier: "premium", amount: 390, days: 365, billing: "year" },
+    ELITE_MONTH: { tier: "elite", amount: 78, days: 30, billing: "month" },
+    ELITE_YEAR: { tier: "elite", amount: 780, days: 365, billing: "year" },
   },
-  stripe: {
-    PREMIUM_WEEK: "",
+  whop: {
     PREMIUM_MONTH: "",
-    ELITE_WEEK: "",
+    PREMIUM_YEAR: "",
     ELITE_MONTH: "",
+    ELITE_YEAR: "",
   },
 };
