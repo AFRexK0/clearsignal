@@ -101,7 +101,7 @@
      Modes: "month" | "year".
      Prices are NOT calculated: each card carries its own
      data-price-month and data-price-year values. */
-  let billingMode = "year";
+  let billingMode = "month";
   let swapping = false;
   let pending = false;
 
